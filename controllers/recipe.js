@@ -7,7 +7,7 @@ async function getRecipeByColletion(req,res){
     let {page = 1, size = MAX_RECORDS} = req.query
     try{
         let total_page = await recipeResponsitory.getTotalPageInCollection(id)
-        let results = await recipeResponsitory.getRecipeByColletion({
+        let results = await recipeResponsitory.getRecipesByColletion({
             id_collection: id,
             page: page,
             size:size

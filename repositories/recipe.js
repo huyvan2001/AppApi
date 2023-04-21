@@ -1,3 +1,4 @@
+import { MAX_RECORDS } from "../Global/constants.js";
 import { Recipe } from "../models/index.js";
 
 const getRecipeByFilter = async({
@@ -22,41 +23,53 @@ const getRecipeByIngredient = async({
     let filterRecipesByIngredient = await Recipe.find({id_ingredient :id_ingredient})
 }
 
-const findRecipeById = async(id_recipe) => {
-    return await Recipe.findOne({id_recipe : id_recipe})
-    // if (typeof recipeUpdate !== "undefined" && recipeUpdate !== null){
-    //     recipeUpdate.id_category_detail.push(id_category_detail)
-    //     await recipeUpdate.save()
-    // }
+const getTotalPageInCollection = async(id) => {
+    let total = await Recipe.find({id_collection: id}).countDocuments()
+    return Math.ceil(total/MAX_RECORDS)
 }
 
-const updateCollection = async (
-    {   ID_recipe, 
-        ID_category_detail}) => {
-    try {
-      // Cập nhật trường id_recipe_detail của đối tượng Recipe dựa trên ID
-      const updatedRecipe = await Recipe.findOneAndUpdate(
-        { id_recipe: ID_recipe }, // Điều kiện tìm kiếm đối tượng Recipe cần cập nhật
-        { $push: { id_category_detail: ID_category_detail } }, // Cập nhật trường id_recipe_detail bằng cách thêm mới giá trị vào mảng
-        { new: true } // Lựa chọn trả về đối tượng Recipe đã được cập nhật
-      );
-      console.log(updatedRecipe)
+const getRecipesByColletion = async({
+    id_collection,
+    page,
+    size
+}) => {
+    let results = Recipe.aggregate([
+        {
+            $lookup: {
+              from: 'categorydetails',
+              localField: 'id_category_detail',
+              foreignField: 'id_category_detail',
+              as: 'category_details'
+            }
+        },
+        {
+            $match:{id_collection: id_collection}
+        },
+        {
+            $project:{
+                id_recipe:1,
+                id_recipe_detail:1,
+                name:1,
+                image_url:1,
+                total_time:1,
+                author:1,
+                category_details:{
+                    _id:1,
+                    name:1,
+                    url_image:1
+                }
+            }
+        },
+        {$skip: (page - 1) * size},
+        {$limit: size},
 
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
-const updateAllRecipe = async(listUpdateRecipe) => {
-    for (let idupdate of listUpdateRecipe){
-        await updateCollection({
-            ID_recipe: idupdate.id_recipe,
-            ID_category_detail: idupdate.id_category_detail
-        })  
-    }
-
+    ])
+    return results
 }
+
 
 export default {
-    updateAllRecipe
+    getTotalPageInCollection,
+    getRecipesByColletion
 }
