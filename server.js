@@ -9,7 +9,8 @@ import {
     collectionRouter,
     recipeRouter,
     authorRouter,
-    recipedetailRouter
+    recipedetailRouter,
+    ingredientRouter
 } from './routes/index.js';
 
 
@@ -21,6 +22,7 @@ app.use('/collection',collectionRouter)
 app.use('/recipe',recipeRouter)
 app.use('/author',authorRouter)
 app.use('/recipedetail',recipedetailRouter)
+app.use('/ingredient',ingredientRouter)
 
 const port = process.env.PORT ?? 3000
 app.get('/',(req,res) => {
