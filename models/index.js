@@ -5,6 +5,9 @@ import Ingredient from './ingredient.js';
 import IngredientDetail from './ingredientdetail.js'
 import Nutrition from './nutrition.js'
 import Collection from './collection.js'
+import Author from './author.js'
+import RecipeDetail from "./recipedetail.js"
+import RecipeNutrition from './recipenutrition.js';
 export{
     Category,
     CategoryDetail,
@@ -12,5 +15,8 @@ export{
     IngredientDetail,
     Nutrition,
     Recipe,
-    Collection
+    Collection,
+    Author,
+    RecipeDetail,
+    RecipeNutrition
 }

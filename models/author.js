@@ -1,20 +1,12 @@
 import mongoose, { Schema } from "mongoose";
-export default mongoose.model('Nutrition',
+export default mongoose.model('Author',
 new Schema({
-    id_nutrition: {
-        type: String,
-        required: true
-    },
     name: {
-        type: String,
-        required: true
-    },
-    unit: {
         type: String,
         required: true
     },
     url_image: {
         type: String,
         required: true
-    },
+    }
 }))

@@ -35,12 +35,12 @@ export default mongoose.model('Recipe',
         type: Number,
         required: true
     },
-    id_ingredient:{
+    id_ingerdient:{
         type: [String],
         required: true
     },
     author:{
-        type: [String],
+        type: String,
         required: true
     },
     id_collection:{

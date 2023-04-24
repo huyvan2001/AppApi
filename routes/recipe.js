@@ -5,6 +5,8 @@ import {
 
 const router = express.Router()
 
-router.get('/:id',recipeController.getRecipeByColletion)
+router.get('/collection',recipeController.getRecipeByColletion)
+router.get('/ingredient',recipeController.getRecipeByIngredient)
+router.get('/author',recipeController.getRecipeByAuthor)
 
 export default router

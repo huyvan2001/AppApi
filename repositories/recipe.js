@@ -1,4 +1,3 @@
-import { MAX_RECORDS } from "../Global/constants.js";
 import { Recipe } from "../models/index.js";
 
 const getRecipeByFilter = async({
@@ -14,25 +13,24 @@ const getRecipeByFilter = async({
 
 }
 
-const getRecipeByIngredient = async({
-    page,
-    size,
-    id_ingredient
-}) =>
-{
-    let filterRecipesByIngredient = await Recipe.find({id_ingredient :id_ingredient})
+const getTotalPage = async(id,limit,field) => {
+    const query = {}; // Đối tượng truy vấn
+    query[field] = id;
+    let total = await Recipe.find(query).countDocuments()
+    return Math.ceil(total/limit)
 }
 
-const getTotalPageInCollection = async(id) => {
-    let total = await Recipe.find({id_collection: id}).countDocuments()
-    return Math.ceil(total/MAX_RECORDS)
-}
-
-const getRecipesByColletion = async({
-    id_collection,
+const getResultReturn = ({
+    id,
     page,
-    size
+    limit,
+    field
+
 }) => {
+    const query = {}; // Đối tượng truy vấn
+    query[field] = id;
+    page = parseInt(page)
+    limit = parseInt(limit)
     let results = Recipe.aggregate([
         {
             $lookup: {
@@ -43,7 +41,7 @@ const getRecipesByColletion = async({
             }
         },
         {
-            $match:{id_collection: id_collection}
+            $match:query
         },
         {
             $project:{
@@ -60,16 +58,86 @@ const getRecipesByColletion = async({
                 }
             }
         },
-        {$skip: (page - 1) * size},
-        {$limit: size},
-
-
+        {$skip: (page - 1) * limit},
+        {$limit: limit}
     ])
     return results
 }
 
+const getRecipeByAuthor = async({
+    author,
+    page,
+    limit
+}) => {
+    return getResultReturn({
+        id : author,
+        page:page,
+        limit:limit,
+        field:"author"
+    })
+}
+
+const getIngredientByRecipe = async(id) => {
+    try{
+        return Recipe.aggregate([
+            {
+                $lookup: {
+                    from: 'ingredients',
+                    localField: 'id_ingerdient',
+                    foreignField: 'id_ingredient',
+                    as: 'ingredients'
+                }
+            },
+            {
+                $match: { id_recipe_detail: id }
+            },
+            {
+                $project: {
+                    ingredients:{
+                        name:1,
+                        image_url:1
+                    }
+                }
+            }
+        ])
+    }
+    catch(exception){
+        console.log(exception)
+    }
+}
+
+const getRecipeByIngredient = async({
+    id_ingerdient,
+    page,
+    limit
+}) =>
+{
+    return getResultReturn({
+        id : id_ingerdient,
+        page:page,
+        limit:limit,
+        field:"id_ingerdient"
+    })
+}
+
+const getRecipesByColletion = async({
+    id_collection,
+    page,
+    limit
+}) => {
+    return getResultReturn({
+        id : id_collection,
+        page:page,
+        limit:limit,
+        field:"id_collection"
+    })
+}
+
 
 export default {
-    getTotalPageInCollection,
-    getRecipesByColletion
+    getTotalPage,
+    getRecipesByColletion,
+    getRecipeByIngredient,
+    getRecipeByAuthor,
+    getIngredientByRecipe
 }

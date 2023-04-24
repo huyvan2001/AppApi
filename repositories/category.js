@@ -1,6 +1,5 @@
 import {Category} from '../models/index.js';
 import Exception from '../exceptions/Exception.js'
-import { categoryDetailResponsitory } from './index.js';
 
 const getAllCategories = async () => {
     try {
