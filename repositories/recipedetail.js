@@ -19,7 +19,6 @@ const getRecipeDetailById = async(id_recipe_detail) => {
                 $match: {id_recipe_detail: id_recipe_detail},
             },
             {$project:{
-             id_recipe_detail:1,
              name:1,
              image_url:1,
              prep_time:1,

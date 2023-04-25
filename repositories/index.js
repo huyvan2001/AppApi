@@ -6,6 +6,7 @@ import authorResponsitory from "./author.js"
 import recipeDetailResponsitory from "./recipedetail.js"
 import recipeNutritionRespository from "./recipenutrition.js"
 import ingredientResponsitory from "./ingredient.js";
+import ingredientDetailResponsitory from "./ingredientdetail.js"
 
 export {
     categoryResponsitory,
@@ -15,5 +16,6 @@ export {
     authorResponsitory,
     recipeDetailResponsitory,
     recipeNutritionRespository,
-    ingredientResponsitory
+    ingredientResponsitory,
+    ingredientDetailResponsitory
 }

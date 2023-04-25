@@ -10,7 +10,8 @@ import {
     recipeRouter,
     authorRouter,
     recipedetailRouter,
-    ingredientRouter
+    ingredientRouter,
+    ingredientdetailRouter
 } from './routes/index.js';
 
 
@@ -23,6 +24,7 @@ app.use('/recipe',recipeRouter)
 app.use('/author',authorRouter)
 app.use('/recipedetail',recipedetailRouter)
 app.use('/ingredient',ingredientRouter)
+app.use('/ingredientdetail',ingredientdetailRouter)
 
 const port = process.env.PORT ?? 3000
 app.get('/',(req,res) => {

@@ -1,9 +1,9 @@
 import {Ingredient} from "../models/index.js"
 
-const getTotalPage = async(limit) => {
+const getTotalRecord = async() => {
     try{
         let total = await Ingredient.find({}).countDocuments()
-        return Math.ceil(total/limit)
+        return total
     }
     catch{
 
@@ -29,9 +29,8 @@ const getIngredient = async({
     }
 }
 
-const getTotalPageByAlphabet = async({
-    alphabet,
-    limit
+const getTotalRecordByAlphabet = async({
+    alphabet
 }) =>{
     try {
         let total = await Ingredient.find({
@@ -39,8 +38,7 @@ const getTotalPageByAlphabet = async({
                 $regex: new RegExp(`^${alphabet}`, 'i')
             }
         }).countDocuments()
-        console.log(total)
-        return Math.ceil(total/limit)
+        return total
     }
     catch{
 
@@ -74,7 +72,7 @@ const getIngredientByAlphabet = async({
 
 export default {
     getIngredient,
-    getTotalPage,
+    getTotalRecord,
     getIngredientByAlphabet,
-    getTotalPageByAlphabet
+    getTotalRecordByAlphabet
 }

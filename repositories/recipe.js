@@ -13,11 +13,11 @@ const getRecipeByFilter = async({
 
 }
 
-const getTotalPage = async(id,limit,field) => {
+const getTotalRecord = async(id,field) => {
     const query = {}; // Đối tượng truy vấn
     query[field] = id;
     let total = await Recipe.find(query).countDocuments()
-    return Math.ceil(total/limit)
+    return total
 }
 
 const getResultReturn = ({
@@ -135,7 +135,7 @@ const getRecipesByColletion = async({
 
 
 export default {
-    getTotalPage,
+    getTotalRecord,
     getRecipesByColletion,
     getRecipeByIngredient,
     getRecipeByAuthor,

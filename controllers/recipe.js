@@ -14,8 +14,10 @@ async function getRecipeByColletion(req,res){
     let {id,page = 1, limit = MAX_RECORDS} = req.query
     limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
     try{
-        let total_page = await recipeResponsitory.getTotalPage(id,limit,"id_collection")
+        let total_record = await recipeResponsitory.getTotalRecord(id,"id_collection")
 
+        limit = limit >= total_record ? total_record : limit
+        let total_page = Math.ceil(total_record/limit)
         let results = await recipeResponsitory.getRecipesByColletion({
             id_collection: id,
             page: page,
@@ -34,8 +36,9 @@ async function getRecipeByIngredient(req,res){
     let {id,page = 1, limit = MAX_RECORDS} = req.query
     limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
     try{
-        let total_page = await recipeResponsitory.getTotalPage(id,limit,"id_ingerdient")
-
+        let total_record = await recipeResponsitory.getTotalRecord(id,"id_ingerdient")
+        limit = limit >= total_record ? total_record : limit
+        let total_page = Math.ceil(total_record/limit)
         let results = await recipeResponsitory.getRecipeByIngredient({
             id_ingerdient: id,
             page: page,
@@ -55,7 +58,9 @@ async function getRecipeByAuthor(req,res){
     limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
     try{
         let {author} = req.body
-        let total_page = await recipeResponsitory.getTotalPage(author,limit,"author")
+        let total_record = await recipeResponsitory.getTotalRecord(author,"author")
+        limit = limit >= total_record ? total_record : limit
+        let total_page = Math.ceil(total_record/limit)
 
         let results = await recipeResponsitory.getRecipeByAuthor({
             author: author,
