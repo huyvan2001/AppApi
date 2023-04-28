@@ -4,6 +4,7 @@ import * as dotenv from 'dotenv'
 dotenv.config() //must have
 
 import connect  from './database/database.js';
+import checkToken from './authentication/auth.js'
 import {
     categoryRouter,
     collectionRouter,
@@ -11,13 +12,18 @@ import {
     authorRouter,
     recipedetailRouter,
     ingredientRouter,
-    ingredientdetailRouter
+    ingredientdetailRouter,
+    userRouter,
+    infoController
 } from './routes/index.js';
 
 
 const app = experess()
+app.use(checkToken)
 app.use(experess.json())
 
+app.use('/user',userRouter)
+app.use('/info',infoController)
 app.use('/category',categoryRouter)
 app.use('/collection',collectionRouter)
 app.use('/recipe',recipeRouter)

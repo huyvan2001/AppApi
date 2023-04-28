@@ -5,6 +5,8 @@ import authorController from "./author.js"
 import recipedetailController from "./recipedetail.js";
 import ingredientController from "./ingredient.js";
 import ingredientdetailController from "./ingredientdetail.js";
+import userController from "./user.js";
+import infoController from "./info.js"
 export{
     categoryController,
     collectionController,
@@ -12,5 +14,7 @@ export{
     authorController,
     recipedetailController,
     ingredientController,
-    ingredientdetailController
+    ingredientdetailController,
+    userController,
+    infoController
 }

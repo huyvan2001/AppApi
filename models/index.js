@@ -8,6 +8,8 @@ import Collection from './collection.js'
 import Author from './author.js'
 import RecipeDetail from "./recipedetail.js"
 import RecipeNutrition from './recipenutrition.js';
+import User from './user.js';
+import Info from './info.js'
 export{
     Category,
     CategoryDetail,
@@ -18,5 +20,7 @@ export{
     Collection,
     Author,
     RecipeDetail,
-    RecipeNutrition
+    RecipeNutrition,
+    User,
+    Info
 }
