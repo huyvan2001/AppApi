@@ -1,6 +1,5 @@
 import HttpStatusCode from '../exceptions/HttpStatusCode.js'
 import {categoryResponsitory} from '../repositories/index.js'
-import {MAX_RECORDS} from '../Global/constants.js'
 
 async function getAllCategories(req,res){
     
