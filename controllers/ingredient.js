@@ -1,6 +1,6 @@
 import HttpStatusCode from '../exceptions/HttpStatusCode.js'
 import {ingredientResponsitory} from '../repositories/index.js'
-import {MAX_RECORDS} from '../Global/constants.js'
+import {MAX_RECORDS} from '../global/constants.js'
 
 async function getIngredient(req,res){
     let {page = 1, limit = MAX_RECORDS} = req.query
