@@ -5,7 +5,6 @@ async function getAllCollections(req,res){
     try{
         let allCollections = await collectionResponsitory.getAllCollection()
         res.status(HttpStatusCode.OK).json({
-            message: "Successfully get Collection",
             collections : allCollections
         })
     }

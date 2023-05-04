@@ -60,7 +60,7 @@ async function login(req,res){
     catch(exception){
         res.status(HttpStatusCode.BAD_REQUEST).json({
             message: exception.toString(),
-            status: true
+            status: false
         })
     }
 }
@@ -77,7 +77,7 @@ async function forgotPassword(req,res){
     catch(exception){
         res.status(HttpStatusCode.BAD_REQUEST).json({
             message: exception.toString(),
-            status: true
+            status: false
         })
     }
 }
@@ -102,7 +102,7 @@ async function changePassword(req,res){
     catch(exception){
         res.status(HttpStatusCode.BAD_REQUEST).json({
             message: exception.toString(),
-            status: true
+            status: false
         })
     }
 }

@@ -6,7 +6,8 @@ import recipedetailRouter from './recipedetail.js'
 import ingredientRouter from './ingredient.js';
 import ingredientdetailRouter from './ingredientdetail.js';
 import userRouter from "./user.js"
-import infoController from "./info.js"
+import infoRouter from "./info.js"
+import filterRouter from './filter.js';
 export{
     categoryRouter,
     collectionRouter,
@@ -16,5 +17,6 @@ export{
     ingredientRouter,
     ingredientdetailRouter,
     userRouter,
-    infoController
+    infoRouter,
+    filterRouter
 }

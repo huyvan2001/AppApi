@@ -10,6 +10,9 @@ import RecipeDetail from "./recipedetail.js"
 import RecipeNutrition from './recipenutrition.js';
 import User from './user.js';
 import Info from './info.js'
+import Time from "./time.js"
+import Kcal from "./kcal.js"
+import Serve from "./serve.js"
 export{
     Category,
     CategoryDetail,
@@ -22,5 +25,8 @@ export{
     RecipeDetail,
     RecipeNutrition,
     User,
-    Info
+    Info,
+    Time,
+    Kcal,
+    Serve
 }

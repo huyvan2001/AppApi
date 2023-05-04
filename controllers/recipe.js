@@ -4,10 +4,65 @@ import {MAX_RECORDS} from '../global/constants.js'
 
 const responseJson = (res,results,total_page) => {
     res.status(HttpStatusCode.OK).json({
-        message:'Get sucessfully',
         recipes:results,
         pages:total_page
     })
+}
+
+async function getRecipeByFilter(req,res){
+    let {page = 1, limit = MAX_RECORDS} = req.query
+    limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
+    let {
+        id_category_detail,
+        total_time,
+        serves,
+        kcal,
+        id_ingerdient,
+        author,
+        searchString
+    } = req.body
+
+    try {
+        let total_record = await recipeResponsitory.getTotalRecipeByFilter({
+            id_category_detail,
+            total_time,
+            serves,
+            kcal,
+            id_ingerdient,
+            author,
+            searchString
+        })
+    
+        limit = limit >= total_record ? total_record : limit
+        let total_page = Math.ceil(total_record/limit)
+        if (limit == 0) {
+            let results = []
+            total_page = 0
+            responseJson(res,results,total_page)
+        }
+        else {
+            let results = await recipeResponsitory.getRecipeByFilter({
+                page,
+                limit,
+                id_category_detail,
+                total_time,
+                serves,
+                kcal,
+                id_ingerdient,
+                author,
+                searchString
+            })
+            responseJson(res,results,total_page)
+        }
+        
+    }
+    catch(exception){
+        console.log(exception.toString())
+        res.status(HttpStatusCode.NOT_FOUND).json({
+            message: 'Can not get', 
+        })
+    }
+        
 }
 
 async function getRecipeByColletion(req,res){
@@ -81,5 +136,6 @@ async function getRecipeByAuthor(req,res){
 export default {
     getRecipeByColletion,
     getRecipeByIngredient,
-    getRecipeByAuthor
+    getRecipeByAuthor,
+    getRecipeByFilter
 }

@@ -9,6 +9,7 @@ import ingredientResponsitory from "./ingredient.js";
 import ingredientDetailResponsitory from "./ingredientdetail.js"
 import userResponsitory from "./user.js"
 import infoResponsitory from "./info.js"
+import filterResponsitory from "./filter.js"
 
 export {
     categoryResponsitory,
@@ -21,5 +22,6 @@ export {
     ingredientResponsitory,
     ingredientDetailResponsitory,
     userResponsitory,
-    infoResponsitory
+    infoResponsitory,
+    filterResponsitory
 }

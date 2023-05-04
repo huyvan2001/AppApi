@@ -1,16 +1,122 @@
 import { Recipe } from "../models/index.js";
 
-const getRecipeByFilter = async({
-    page,
-    size,
-    list_id_category_detail,
-    time,
+
+const getTotalRecipeByFilter = async({
+    id_category_detail,
+    total_time,
     serves,
-    calories,
+    kcal,
+    id_ingerdient,
     author,
     searchString
 }) => {
 
+    let matchConditions = getMatchCondition({
+        id_category_detail,
+        total_time,
+        serves,
+        kcal,
+        id_ingerdient,
+        author,
+        searchString
+    })
+
+
+    let total = await Recipe.find(matchConditions).countDocuments()
+    
+    return total
+
+}
+
+const getRecipeByFilter = async({
+    page,
+    limit,
+    id_category_detail,
+    total_time,
+    serves,
+    kcal,
+    id_ingerdient,
+    author,
+    searchString
+}) => {
+    try {
+
+        let matchConditions = getMatchCondition({
+            id_category_detail,
+            total_time,
+            serves,
+            kcal,
+            id_ingerdient,
+            author,
+            searchString
+        })
+
+        const recipes = await Recipe.aggregate([
+            {
+                $match: matchConditions
+            },
+            {
+                $skip: (page - 1) * limit
+            },
+            {
+                $limit: limit
+            }
+        ]);
+        
+        return recipes;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
+const getMatchCondition = ({
+    id_category_detail,
+    total_time,
+    serves,
+    kcal,
+    id_ingerdient,
+    author,
+    searchString
+}) => {
+    const matchConditions = {};
+    if (!!id_category_detail) {
+        matchConditions.id_category_detail = {$in : id_category_detail};
+    }
+    if (!!total_time) {
+        if (total_time <= 60){
+            matchConditions.total_time = { $lte: total_time };
+        } 
+        else {
+            matchConditions.total_time = { $gte: total_time };
+        }
+    }
+    if (!!serves) {
+        if (serves <= 8){
+            matchConditions.serves = { $lte: serves };
+        } 
+        else {
+            matchConditions.serves = { $gte: serves };
+        }
+    }
+    if (!!kcal) {
+        if (kcal <= 1500){
+            matchConditions.kcal = { $lte: kcal };
+        } 
+        else {
+            matchConditions.kcal = { $gte: kcal };
+        }
+    }
+    if (!!id_ingerdient) {
+        matchConditions.id_ingerdient = {$in : id_ingerdient};
+    }
+    if (!!author) {
+        matchConditions.author = {$in : author};
+    }
+    if (!!searchString) {
+        matchConditions.name = {$regex: new RegExp(searchString, 'i')};
+    }
+    return matchConditions
 }
 
 const getTotalRecord = async(id,field) => {
@@ -134,10 +240,13 @@ const getRecipesByColletion = async({
 }
 
 
+
 export default {
     getTotalRecord,
     getRecipesByColletion,
     getRecipeByIngredient,
     getRecipeByAuthor,
-    getIngredientByRecipe
+    getIngredientByRecipe,
+    getRecipeByFilter,
+    getTotalRecipeByFilter,
 }

@@ -7,6 +7,7 @@ import ingredientController from "./ingredient.js";
 import ingredientdetailController from "./ingredientdetail.js";
 import userController from "./user.js";
 import infoController from "./info.js"
+import filterController from "./filter.js";
 export{
     categoryController,
     collectionController,
@@ -16,5 +17,6 @@ export{
     ingredientController,
     ingredientdetailController,
     userController,
-    infoController
+    infoController,
+    filterController
 }
