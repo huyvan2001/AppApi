@@ -50,10 +50,34 @@ const getRecipeByFilter = async({
             author,
             searchString
         })
-
+        page = parseInt(page)
+        limit = parseInt(limit)
         const recipes = await Recipe.aggregate([
             {
+                $lookup: {
+                    from: 'categorydetails',
+                    localField: 'id_category_detail',
+                    foreignField: 'id_category_detail',
+                    as: 'category_details'
+                  }
+            },
+            {
                 $match: matchConditions
+            },
+            {
+                $project:{
+                    id_recipe:1,
+                    id_recipe_detail:1,
+                    name:1,
+                    image_url:1,
+                    total_time:1,
+                    author:1,
+                    category_details:{
+                        _id:1,
+                        name:1,
+                        url_image:1
+                    }
+                }
             },
             {
                 $skip: (page - 1) * limit
@@ -61,8 +85,7 @@ const getRecipeByFilter = async({
             {
                 $limit: limit
             }
-        ]);
-        
+        ]); 
         return recipes;
     } catch (error) {
         console.error(error);
