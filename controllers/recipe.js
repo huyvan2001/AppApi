@@ -17,7 +17,7 @@ async function getRecipeByFilter(req,res){
         total_time,
         serves,
         kcal,
-        id_ingerdient,
+        id_ingredient,
         author,
         searchString
     } = req.body
@@ -28,7 +28,7 @@ async function getRecipeByFilter(req,res){
             total_time,
             serves,
             kcal,
-            id_ingerdient,
+            id_ingerdient:id_ingredient,
             author,
             searchString
         })
@@ -48,7 +48,7 @@ async function getRecipeByFilter(req,res){
                 total_time,
                 serves,
                 kcal,
-                id_ingerdient,
+                id_ingerdient:id_ingredient,
                 author,
                 searchString
             })
