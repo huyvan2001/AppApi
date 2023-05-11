@@ -22,9 +22,10 @@ async function getIngredient(req,res){
         })
     }  
     catch(exception){
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: 'Can not get', 
-        })
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
 }
 async function getIngredientByAlphabet(req,res){
@@ -50,9 +51,10 @@ async function getIngredientByAlphabet(req,res){
         })
     }  
     catch(exception){
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: 'Can not get', 
-        })
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
 }
 
@@ -88,9 +90,10 @@ async function searchIngredient(req,res){
         })
     }  
     catch(exception){
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: exception.toString(), 
-        })
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
 }
 
@@ -116,9 +119,10 @@ async function searchIngredientByAlphabet(req,res){
         })
     }  
     catch(exception){
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: exception.toString(), 
-        })
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
 }
 

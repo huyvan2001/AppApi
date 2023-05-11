@@ -57,10 +57,10 @@ async function getRecipeByFilter(req,res){
         
     }
     catch(exception){
-        console.log(exception.toString())
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: 'Can not get', 
-        })
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
         
 }
@@ -83,10 +83,11 @@ async function getRecipeByColletion(req,res){
         })
         responseJson(res,results,total_page)
     }
-    catch{
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: 'Can not get', 
-        })
+    catch(exception){
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
 }
 
@@ -111,10 +112,11 @@ async function getRandomRecipe(req,res){
         })
         responseJson(res,results,total_page)
     }
-    catch{
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: 'Can not get', 
-        }) 
+    catch(exception){
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
 
 }
@@ -137,10 +139,11 @@ async function getRecipeByIngredient(req,res){
         })
         responseJson(res,results,total_page)
     }
-    catch{
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: 'Can not get', 
-        })
+    catch(exception){
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
 }
 
@@ -163,10 +166,11 @@ async function getRecipeByAuthor(req,res){
         })
         responseJson(res,results,total_page)
     }
-    catch{
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: 'Can not get', 
-        })
+    catch(exception){
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
 }
 

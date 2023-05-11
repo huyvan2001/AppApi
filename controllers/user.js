@@ -26,9 +26,9 @@ async function registerHandle(req,res){
     }
     catch(exception){
         res.status(HttpStatusCode.BAD_REQUEST).json({
-           message: exception.toString(),
-           status: false
-        })
+            message: exception.toString(),
+            status: false
+         })
     }
 
 }

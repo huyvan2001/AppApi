@@ -18,9 +18,10 @@ async function getAuthor(req,res){
         })
     }  
     catch(exception){
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: 'Can not get', 
-        })
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
 }
 
@@ -46,9 +47,10 @@ async function searchAuthor(req,res){
         })
     }
     catch(exception){
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: exception.toString(), 
-        })
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
 }
 

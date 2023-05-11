@@ -11,8 +11,9 @@ async function getAllCategories(req,res){
     }
     catch(exception){
         res.status(HttpStatusCode.BAD_REQUEST).json({
-            message:"Can't not get Category"
-        })
+            message: exception.toString(),
+            status: false
+         })
     }
 }
 export default{

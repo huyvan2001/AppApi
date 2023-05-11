@@ -16,10 +16,11 @@ async function getRecipeDetailById(req,res){
             details : detail,
         })
     }
-    catch{
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: "Can't not get",
-        })
+    catch(exception){
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
 }
 export default {

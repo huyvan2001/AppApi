@@ -8,10 +8,11 @@ async function getTime(req,res){
             time:results
         })
     }
-    catch{
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: 'Can not get', 
-        })
+    catch(exception){
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
 }
 
@@ -22,10 +23,11 @@ async function getServe(req,res){
             serves:results
         })
     }
-    catch{
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: 'Can not get', 
-        })
+    catch(exception){
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
 }
 
@@ -36,10 +38,11 @@ async function getKcal(req,res){
             kcal:results
         })
     }
-    catch{
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: 'Can not get', 
-        })
+    catch(exception){
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
 }
 

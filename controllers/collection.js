@@ -8,12 +8,11 @@ async function getAllCollections(req,res){
             collections : allCollections
         })
     }
-    catch{
-
-        res.status(HttpStatusCode.NOT_FOUND).json({
-            message: "Can't not get",
-            categories: []
-        })
+    catch(exception){
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
     }
 }
 
