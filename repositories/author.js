@@ -29,7 +29,35 @@ const getAuthor = async({
         console.log(error)
     }
 }
+
+const getTotalRecordSearch = async(searchString) => {
+    return await Author.find({name : { $regex: searchString,$options: 'i'}}).countDocuments()
+}
+
+const searchAuthor = async({
+    page,
+    limit,
+    searchString
+}) => {
+    try{
+        page = parseInt(page)
+        limit = parseInt(limit)
+        
+
+        let results = await Author.aggregate([
+            {$match:{ name : { $regex: searchString,$options: 'i'}}},
+            {$skip: (page - 1) * limit},
+            {$limit: limit}
+        ])
+        return results
+    }
+    catch(error){
+        console.log(error)
+    }
+}
 export default {
     getAuthor,
-    getTotalPage
+    getTotalPage,
+    searchAuthor,
+    getTotalRecordSearch
 }

@@ -29,6 +29,57 @@ const getIngredient = async({
     }
 }
 
+const getTotalRecordSearch = async(searchString) => {
+    return  await Ingredient.find({name : { $regex: searchString,$options: 'i'}}).countDocuments() 
+}
+
+const searchIngredient = async({
+    page,
+    limit,
+    searchString
+}) => {
+    try{
+        page = parseInt(page)
+        limit = parseInt(limit)
+        
+
+        let results = await Ingredient.aggregate([
+            {$match:{ name : { $regex: searchString,$options: 'i'}}},
+            {$skip: (page - 1) * limit},
+            {$limit: limit}
+        ])
+        return results
+        }
+        catch(error){
+            console.log(error)
+        }
+}
+
+const getTotalRecordSearchByAlphabet = async(searchString,alphabet) => {
+    return  await Ingredient.find({name : { $regex: `^${alphabet}.*${searchString}`,$options: 'i'}}).countDocuments() 
+}
+
+const searchIngredientByAlphabet = async({
+    page,
+    limit,
+    alphabet,
+    searchString
+}) => {
+    try {
+        page = parseInt(page)
+        limit = parseInt(limit)
+        let results = await Ingredient.aggregate([
+            {$match:{ name : { $regex: `^${alphabet}.*${searchString}`,$options: 'i'}}},
+            {$skip: (page - 1) * limit},
+            {$limit: limit}
+        ])
+        return results
+    }
+    catch{
+
+    }
+}
+
 const getTotalRecordByAlphabet = async({
     alphabet
 }) =>{
@@ -74,5 +125,9 @@ export default {
     getIngredient,
     getTotalRecord,
     getIngredientByAlphabet,
-    getTotalRecordByAlphabet
+    getTotalRecordByAlphabet,
+    searchIngredient,
+    getTotalRecordSearch,
+    searchIngredientByAlphabet,
+    getTotalRecordSearchByAlphabet
 }

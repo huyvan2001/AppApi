@@ -235,6 +235,85 @@ const getIngredientByRecipe = async(id) => {
     }
 }
 
+const getTotalRecordByRandomSearch = async(searchString) => {
+
+    let results = await Recipe.aggregate([
+        {
+            $sample: {size : 100}
+        },
+        {
+            $match: {name: { $regex: searchString,$options: 'i'}}
+        }, 
+        {
+            $group: {
+                _id: null,
+                count: { $sum: 1 }
+            }
+        },
+        {
+            $project: {
+                _id: 0,
+                count: 1
+            }
+        }
+    ])
+    return results[0].count
+}
+
+const getRandomRecipe = async({
+    page,
+    limit,
+    searchString
+}) => {
+    try{
+    let query = {}
+    console.log(searchString)
+    if (searchString){
+        query = {name: { $regex: searchString,$options: 'i'}}
+        
+    }
+    page = parseInt(page)
+    limit = parseInt(limit)
+    let results = Recipe.aggregate([
+        {
+            $lookup: {
+              from: 'categorydetails',
+              localField: 'id_category_detail',
+              foreignField: 'id_category_detail',
+              as: 'category_details'
+            }
+        },
+        {
+            $sample: {size : 100}
+        },
+        {$match : query}
+        ,
+        {
+            $project:{
+                id_recipe:1,
+                id_recipe_detail:1,
+                name:1,
+                image_url:1,
+                total_time:1,
+                author:1,
+                category_details:{
+                    _id:1,
+                    name:1,
+                    url_image:1
+                }
+            }
+        },
+        {$skip: (page - 1) * limit},
+        {$limit: limit}
+    ])
+    return results
+    }
+    catch(exception){
+        console.log(exception)
+    }
+}
+
+
 const getRecipeByIngredient = async({
     id_ingerdient,
     page,
@@ -272,4 +351,6 @@ export default {
     getIngredientByRecipe,
     getRecipeByFilter,
     getTotalRecipeByFilter,
+    getRandomRecipe,
+    getTotalRecordByRandomSearch
 }

@@ -8,6 +8,9 @@ async function getIngredient(req,res){
     try{
         let total_record = await ingredientResponsitory.getTotalRecord()
         limit = limit >= total_record ? total_record : limit
+        if (limit == 0) {
+            limit = 1
+        }
         let total_page = Math.ceil(total_record/limit)
         let results = await ingredientResponsitory.getIngredient({
             page: page,
@@ -32,6 +35,9 @@ async function getIngredientByAlphabet(req,res){
             alphabet: key
         })
         limit = limit >= total_record ? total_record : limit
+        if (limit == 0) {
+            limit = 1
+        }
         let total_page = Math.ceil(total_record/limit)
         let results = await ingredientResponsitory.getIngredientByAlphabet({
             page: page,
@@ -50,8 +56,75 @@ async function getIngredientByAlphabet(req,res){
     }
 }
 
+async function search(req,res){
+    let {key} = req.query
+
+    if (!key) {
+        searchIngredient(req,res)
+    }
+    else{
+        searchIngredientByAlphabet(req,res)
+    }
+}
+
+async function searchIngredient(req,res){
+    let {searchString,page = 1, limit = MAX_RECORDS} = req.query
+    limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
+    try{
+        let total_record = await ingredientResponsitory.getTotalRecordSearch(searchString)
+        limit = limit >= total_record ? total_record : limit
+        if (limit == 0) {
+            limit = 1
+        }
+        let total_page = Math.ceil(total_record/limit)
+        let results = await ingredientResponsitory.searchIngredient({
+            page: page,
+            limit:limit,
+            searchString
+        })
+        res.status(HttpStatusCode.OK).json({
+            ingredients:results,
+            pages:total_page
+        })
+    }  
+    catch(exception){
+        res.status(HttpStatusCode.NOT_FOUND).json({
+            message: exception.toString(), 
+        })
+    }
+}
+
+async function searchIngredientByAlphabet(req,res){
+    let {key,searchString,page = 1, limit = MAX_RECORDS} = req.query
+    limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
+    try{
+        let total_record = await ingredientResponsitory.getTotalRecordSearchByAlphabet(searchString,key)
+        limit = limit >= total_record ? total_record : limit
+        if (limit == 0) {
+            limit = 1
+        }
+        let total_page = Math.ceil(total_record/limit)
+        let results = await ingredientResponsitory.searchIngredientByAlphabet({
+            page: page,
+            limit:limit,
+            alphabet:key,
+            searchString
+        })
+        res.status(HttpStatusCode.OK).json({
+            ingredients:results,
+            pages:total_page
+        })
+    }  
+    catch(exception){
+        res.status(HttpStatusCode.NOT_FOUND).json({
+            message: exception.toString(), 
+        })
+    }
+}
+
 
 export default {
     getIngredient,
-    getIngredientByAlphabet
+    getIngredientByAlphabet,
+    search
 }

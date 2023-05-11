@@ -7,4 +7,5 @@ const router = express.Router()
 
 router.get('/',ingredientController.getIngredient)
 router.get('/alphabet',ingredientController.getIngredientByAlphabet)
+router.get('/search',ingredientController.search)
 export default router

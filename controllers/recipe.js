@@ -72,6 +72,9 @@ async function getRecipeByColletion(req,res){
         let total_record = await recipeResponsitory.getTotalRecord(id,"id_collection")
 
         limit = limit >= total_record ? total_record : limit
+        if (limit == 0) {
+            limit = 1
+        }
         let total_page = Math.ceil(total_record/limit)
         let results = await recipeResponsitory.getRecipesByColletion({
             id_collection: id,
@@ -87,12 +90,45 @@ async function getRecipeByColletion(req,res){
     }
 }
 
+async function getRandomRecipe(req,res){
+    let {searchString,page = 1, limit = MAX_RECORDS} = req.query
+    var total_page = 10
+    try{
+
+        if (searchString){
+            let total_record = await recipeResponsitory.getTotalRecordByRandomSearch(searchString)
+            limit = limit >= total_record ? total_record : limit
+            if (limit == 0) {
+                limit = 1
+            }
+            total_page = Math.ceil(total_record/limit)
+            
+        }
+        let results = await recipeResponsitory.getRandomRecipe({
+            page: page,
+            limit:limit,
+            searchString
+        })
+        responseJson(res,results,total_page)
+    }
+    catch{
+        res.status(HttpStatusCode.NOT_FOUND).json({
+            message: 'Can not get', 
+        }) 
+    }
+
+}
+
+
 async function getRecipeByIngredient(req,res){
     let {id,page = 1, limit = MAX_RECORDS} = req.query
     limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
     try{
         let total_record = await recipeResponsitory.getTotalRecord(id,"id_ingerdient")
         limit = limit >= total_record ? total_record : limit
+        if (limit == 0) {
+            limit = 1
+        }
         let total_page = Math.ceil(total_record/limit)
         let results = await recipeResponsitory.getRecipeByIngredient({
             id_ingerdient: id,
@@ -115,6 +151,9 @@ async function getRecipeByAuthor(req,res){
         let {author} = req.body
         let total_record = await recipeResponsitory.getTotalRecord(author,"author")
         limit = limit >= total_record ? total_record : limit
+        if (limit == 0) {
+            limit = 1
+        }
         let total_page = Math.ceil(total_record/limit)
 
         let results = await recipeResponsitory.getRecipeByAuthor({
@@ -137,5 +176,6 @@ export default {
     getRecipeByColletion,
     getRecipeByIngredient,
     getRecipeByAuthor,
-    getRecipeByFilter
+    getRecipeByFilter,
+    getRandomRecipe
 }
