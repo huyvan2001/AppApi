@@ -11,7 +11,7 @@ async function getRecipeDetailById(req,res){
         let nutritions = await recipeNutritionRespository.getAllNutritionById(id_recipe_nutrition)
         let detail = await recipeDetailResponsitory.getRecipeDetailById(id)
         res.status(HttpStatusCode.OK).json({
-            ingredients:ingredients,
+            ingredients,
             nutritions:nutritions,
             details : detail,
         })

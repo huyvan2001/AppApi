@@ -214,7 +214,7 @@ const getIngredientByRecipe = async(id) => {
                     from: 'ingredients',
                     localField: 'id_ingerdient',
                     foreignField: 'id_ingredient',
-                    as: 'ingredient'
+                    as: 'ingredients'
                 }
             },
             {
@@ -222,7 +222,7 @@ const getIngredientByRecipe = async(id) => {
             },
             {
                 $project: {
-                    ingredient:{
+                    ingredients:{
                         name:1,
                         image_url:1
                     }
