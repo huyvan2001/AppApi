@@ -222,10 +222,8 @@ const getIngredientByRecipe = async(id) => {
             },
             {
                 $project: {
-                    ingredients:{
-                        name:1,
-                        image_url:1
-                    }
+                    _id:0,
+                    ingredients: 1
                 }
             }
         ])
