@@ -13,7 +13,7 @@ async function getRecipeDetailById(req,res){
         res.status(HttpStatusCode.OK).json({
             ingredients: ingredients[0].ingredients,
             nutritions:nutritions,
-            details : detail,
+            details : detail[0],
         })
     }
     catch(exception){
