@@ -13,13 +13,13 @@ const getAllNutritionById = async(id) =>
                 from: 'nutritions',
                 localField: 'id_nutrition',
                 foreignField: 'id_nutrition',
-                as: 'nutrition'
+                as: 'nutrition_detail'
             }
         },
         {
             $project:{
                 value:1,
-                nutrition:{
+                nutrition_detail:{
                     name:1,
                     unit:1,
                     url_image:1
