@@ -5,7 +5,7 @@ import {
 
 const router = express.Router()
 
-router.get('/',authorController.getAuthor)
-router.get('/search',authorController.searchAuthor)
+router.post('/',authorController.getAuthor)
+router.post('/search',authorController.searchAuthor)
 
 export default router
