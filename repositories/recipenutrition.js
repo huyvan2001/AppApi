@@ -20,9 +20,11 @@ const getAllNutritionById = async(id) =>
             $project:{
                 value:1,
                 nutrition_detail:{
-                    name:1,
-                    unit:1,
-                    url_image:1
+                        $cond: {
+                          if: { $gt: [{ $size: "$nutrition_detail" }, 0] },
+                          then: { $arrayElemAt: ["$nutrition_detail", 0] },
+                          else: null
+                        }
                 }
             }
         }
