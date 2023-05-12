@@ -6,7 +6,7 @@ async function getIngredientDetailById(req,res){
         let id = req.params.id
         let details = await ingredientDetailResponsitory.getIngredientDetailByID(id)
         res.status(HttpStatusCode.OK).json({
-            details : details,
+            details : details[0],
         })
     }
     catch(exception){
