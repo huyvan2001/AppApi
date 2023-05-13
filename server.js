@@ -15,7 +15,8 @@ import {
     ingredientdetailRouter,
     userRouter,
     infoRouter,
-    filterRouter
+    filterRouter,
+    calendarRouter
 } from './routes/index.js';
 
 
@@ -25,6 +26,7 @@ app.use(experess.json())
 
 app.use('/user',userRouter)
 app.use('/info',infoRouter)
+app.use('/calendar',calendarRouter)
 app.use('/category',categoryRouter)
 app.use('/collection',collectionRouter)
 app.use('/recipe',recipeRouter)
@@ -33,6 +35,7 @@ app.use('/recipedetail',recipedetailRouter)
 app.use('/ingredient',ingredientRouter)
 app.use('/ingredientdetail',ingredientdetailRouter)
 app.use('/filter',filterRouter)
+
 
 const port = process.env.PORT ?? 3000
 app.get('/',(req,res) => {

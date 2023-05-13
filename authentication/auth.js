@@ -5,7 +5,9 @@ export default function checkToken(req,res,next) {
     if( req.url.toLowerCase().trim() != '/info'.toLowerCase().trim()
         || req.url.toLowerCase().trim() != '/info/create'.toLowerCase().trim()
         || req.url.toLowerCase().trim() != '/info/update'.toLowerCase().trim()||
-        req.url.toLowerCase().trim() != '/user/changepassword'.toLowerCase().trim()
+        req.url.toLowerCase().trim() != '/user/changepassword'.toLowerCase().trim() ||
+        req.url.toLowerCase().trim() != '/calendar/create'.toLowerCase().trim(),
+        req.url.toLowerCase().trim() != '/calendar'.toLowerCase().trim()
         ) {
             next()
         return

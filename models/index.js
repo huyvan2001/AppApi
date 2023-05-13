@@ -13,6 +13,7 @@ import Info from './info.js'
 import Time from "./time.js"
 import Kcal from "./kcal.js"
 import Serve from "./serve.js"
+import Calendar from "./calendar.js"
 export{
     Category,
     CategoryDetail,
@@ -28,5 +29,6 @@ export{
     Info,
     Time,
     Kcal,
-    Serve
+    Serve,
+    Calendar
 }
