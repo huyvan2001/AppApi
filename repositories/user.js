@@ -18,12 +18,10 @@ const login = async({
     }
 
     const emailLower = (email).trim().toLowerCase();
-    let existingUser = await User.findOne({emailLower}).exec()
+    let existingUser = await User.findOne({email: emailLower}).exec()
     if (existingUser){
+
         let _id = existingUser._id
-        if (existingUser != email.toLowerCase()) {
-            throw new Exception(Exception.WRONG_EMAIL_OR_PASSWORD)
-        }  
         let isMatch = await bcrypt.compare(password, existingUser.password)
         if(!!isMatch) {
             //create Java Web Token
