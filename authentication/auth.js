@@ -3,9 +3,9 @@ import jwt from 'jsonwebtoken'
 
 export default function checkToken(req,res,next) {
     if( req.url.toLowerCase().trim() == '/ingredient'.toLowerCase().trim()
-        || req.url.toLowerCase().trim() == '/ingredientdetail'.toLowerCase().trim()
-        || req.url.toLowerCase().trim() == '/author'.toLowerCase().trim()
-        || req.url.toLowerCase().trim() == '/filter'.toLowerCase().trim()
+        || req.url.toLowerCase().trim().includes('/ingredientdetail'.toLowerCase().trim())
+        || req.url.toLowerCase().trim().includes('/author'.toLowerCase().trim())
+        || req.url.toLowerCase().trim().includes('/filter'.toLowerCase().trim())
         || req.url.toLowerCase().trim() == '/likedish'.toLowerCase().trim()
         || req.url.toLowerCase().trim() == '/heathcare'.toLowerCase().trim()
         || req.url.toLowerCase().trim() == '/collection'.toLowerCase().trim()
