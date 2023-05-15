@@ -8,9 +8,18 @@ async function getInfo(req,res) {
         const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
         let {_id} =  jwtObject 
         const info = await infoResponsitory.getInfo(_id)
-        res.status(HttpStatusCode.OK).json({
-            info: info
-        })
+        if (info[0] != null) {
+            res.status(HttpStatusCode.OK).json({
+                info: info[0],
+                status: true
+            })
+        }
+        else {
+            res.status(HttpStatusCode.OK).json({
+                info: null,
+                status: false
+            })
+        }
     }
     catch(exception){
         res.status(HttpStatusCode.BAD_REQUEST).json({
