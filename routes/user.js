@@ -8,7 +8,7 @@ const router = express.Router()
 router.post('/register',userController.registerHandle)
 router.post('/login',userController.login)
 router.post('/forgot',userController.forgotPassword)
-router.post('/changepassword',userController.changePassword)
+router.put('/changepassword',userController.changePassword)
 router.get('/activate/:token',userController.activateHandle)
 
 
