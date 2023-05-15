@@ -29,6 +29,7 @@ const getTotalRecipeByFilter = async({
 }
 
 const getRecipeByFilter = async({
+    id_user,
     page,
     limit,
     id_category_detail,
@@ -65,6 +66,31 @@ const getRecipeByFilter = async({
                 $match: matchConditions
             },
             {
+                $lookup: {
+                  from: "likes",
+                  let: { recipeId: "$id_recipe" },
+                  pipeline: [
+                    {
+                      $match: {
+                        $expr: {
+                          $and: [
+                            { $eq: ["$id_recipe", "$$recipeId"] },
+                            { $eq: ["$id_user", id_user] }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      $project: {
+                        _id: 0,
+                        is_like: 1
+                      }
+                    }
+                  ],
+                  as: "like"
+                }
+              },
+            {
                 $project:{
                     id_recipe:1,
                     id_recipe_detail:1,
@@ -76,7 +102,14 @@ const getRecipeByFilter = async({
                         _id:1,
                         name:1,
                         url_image:1
-                    }
+                    },
+                    like: {
+                        $cond: {
+                          if: { $gt: [{ $size: "$like" }, 0] },
+                          then: { $arrayElemAt: ["$like.is_like", 0] },
+                          else: false
+                        }
+                      }
                 }
             },
             {
@@ -150,6 +183,7 @@ const getTotalRecord = async(id,field) => {
 }
 
 const getResultReturn = ({
+    id_user,
     id,
     page,
     limit,
@@ -160,7 +194,8 @@ const getResultReturn = ({
     query[field] = id;
     page = parseInt(page)
     limit = parseInt(limit)
-    let results = Recipe.aggregate([
+
+    const results = Recipe.aggregate([
         {
             $lookup: {
               from: 'categorydetails',
@@ -170,26 +205,59 @@ const getResultReturn = ({
             }
         },
         {
-            $match:query
+          $match: query
         },
         {
-            $project:{
-                id_recipe:1,
-                id_recipe_detail:1,
-                name:1,
-                image_url:1,
-                total_time:1,
-                author:1,
-                category_details:{
-                    _id:1,
-                    name:1,
-                    url_image:1
+          $lookup: {
+            from: "likes",
+            let: { recipeId: "$id_recipe" },
+            pipeline: [
+              {
+                $match: {
+                  $expr: {
+                    $and: [
+                      { $eq: ["$id_recipe", "$$recipeId"] },
+                      { $eq: ["$id_user", id_user] }
+                    ]
+                  }
                 }
-            }
+              },
+              {
+                $project: {
+                  _id: 0,
+                  is_like: 1
+                }
+              }
+            ],
+            as: "like"
+          }
         },
-        {$skip: (page - 1) * limit},
-        {$limit: limit}
-    ])
+        {
+          $project: {
+            id_recipe: 1,
+            id_recipe_detail: 1,
+            name: 1,
+            image_url: 1,
+            total_time: 1,
+            author: 1,
+            category_details: {
+              _id: 1,
+              name: 1,
+              url_image: 1
+            },
+            like: {
+              $cond: {
+                if: { $gt: [{ $size: "$like" }, 0] },
+                then: { $arrayElemAt: ["$like.is_like", 0] },
+                else: false
+              }
+            }
+          }
+        },
+        { $skip: (page - 1) * limit },
+        { $limit: limit }
+      ]);
+   
     return results
 }
 
@@ -259,6 +327,7 @@ const getTotalRecordByRandomSearch = async(searchString) => {
 }
 
 const getRandomRecipe = async({
+    id_user,
     page,
     limit,
     searchString
@@ -287,6 +356,32 @@ const getRandomRecipe = async({
         {$match : query}
         ,
         {
+            $lookup: {
+              from: "likes",
+              let: { recipeId: "$id_recipe" },
+              pipeline: [
+                {
+                  $match: {
+                    $expr: {
+                      $and: [
+                        { $eq: ["$id_recipe", "$$recipeId"] },
+                        { $eq: ["$id_user", id_user] }
+                      ]
+                    }
+                  }
+                },
+                {
+                  $project: {
+                    _id: 0,
+                    is_like: 1
+                  }
+                }
+              ],
+              as: "like"
+            }
+          }
+        ,
+        {
             $project:{
                 id_recipe:1,
                 id_recipe_detail:1,
@@ -298,7 +393,14 @@ const getRandomRecipe = async({
                     _id:1,
                     name:1,
                     url_image:1
-                }
+                },
+                like: {
+                    $cond: {
+                      if: { $gt: [{ $size: "$like" }, 0] },
+                      then: { $arrayElemAt: ["$like.is_like", 0] },
+                      else: false
+                    }
+                  }
             }
         },
         {$skip: (page - 1) * limit},
@@ -313,6 +415,7 @@ const getRandomRecipe = async({
 
 
 const getRecipeByIngredient = async({
+    id_user,
     id_ingerdient,
     page,
     limit
@@ -327,11 +430,13 @@ const getRecipeByIngredient = async({
 }
 
 const getRecipesByColletion = async({
+    id_user,
     id_collection,
     page,
     limit
 }) => {
     return getResultReturn({
+        id_user,
         id : id_collection,
         page:page,
         limit:limit,

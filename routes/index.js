@@ -9,6 +9,9 @@ import userRouter from "./user.js"
 import infoRouter from "./info.js"
 import filterRouter from './filter.js';
 import calendarRouter from './calendar.js';
+import likeController  from './like.js';
+import likedishController from './likedish.js'
+import heathCareController from './heathcare.js'
 export{
     categoryRouter,
     collectionRouter,
@@ -20,5 +23,8 @@ export{
     userRouter,
     infoRouter,
     filterRouter,
-    calendarRouter
+    calendarRouter,
+    likeController,
+    likedishController,
+    heathCareController
 }

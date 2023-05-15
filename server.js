@@ -16,7 +16,10 @@ import {
     userRouter,
     infoRouter,
     filterRouter,
-    calendarRouter
+    calendarRouter,
+    likeController,
+    likedishController,
+    heathCareController
 } from './routes/index.js';
 
 
@@ -27,6 +30,7 @@ app.use(experess.json())
 app.use('/user',userRouter)
 app.use('/info',infoRouter)
 app.use('/calendar',calendarRouter)
+app.use('/like',likeController)
 app.use('/category',categoryRouter)
 app.use('/collection',collectionRouter)
 app.use('/recipe',recipeRouter)
@@ -35,6 +39,8 @@ app.use('/recipedetail',recipedetailRouter)
 app.use('/ingredient',ingredientRouter)
 app.use('/ingredientdetail',ingredientdetailRouter)
 app.use('/filter',filterRouter)
+app.use('/likedish',likedishController)
+app.use('/heathcare',heathCareController)
 
 
 const port = process.env.PORT ?? 3000

@@ -25,8 +25,12 @@ export default mongoose.model('Info',
             type: Number, 
             required: true
         },
-        favoriteList: { 
+        id_like_dish: { 
             type: [String], 
+            required: true
+        },
+        id_heath_care: { 
+            type: String, 
             required: true
         }
     })

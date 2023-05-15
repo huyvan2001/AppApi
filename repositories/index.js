@@ -11,6 +11,9 @@ import userResponsitory from "./user.js"
 import infoResponsitory from "./info.js"
 import filterResponsitory from "./filter.js"
 import calendarResponsitory from "./calendar.js";
+import likeResponsitory from "./like.js"
+import likedishResponsitory from "./likedish.js"
+import healthcareResponsitory from "./healthcare.js";
 
 export {
     categoryResponsitory,
@@ -25,5 +28,8 @@ export {
     userResponsitory,
     infoResponsitory,
     filterResponsitory,
-    calendarResponsitory
+    calendarResponsitory,
+    likeResponsitory,
+    likedishResponsitory,
+    healthcareResponsitory
 }

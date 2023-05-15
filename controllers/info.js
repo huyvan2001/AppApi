@@ -32,7 +32,8 @@ async function createInfo(req,res) {
             gender,
             height,
             weight,
-            favoriteList
+            id_like_dish,
+            id_heath_care
         } = req.body
 
         await infoResponsitory.createInfo({
@@ -42,7 +43,8 @@ async function createInfo(req,res) {
             gender,
             height,
             weight,
-            favoriteList
+            id_like_dish,
+            id_heath_care
         })
 
         res.status(HttpStatusCode.OK).json({
@@ -71,7 +73,8 @@ async function updateInfo(req,res) {
             dateOfBirth,
             gender,
             height,
-            weight
+            weight,
+            id_heath_care
         } = req.body
     
         await infoResponsitory.updateInfo({
@@ -80,7 +83,8 @@ async function updateInfo(req,res) {
             dateOfBirth,
             gender,
             height,
-            weight
+            weight,
+            id_heath_care
         })
 
         res.status(HttpStatusCode.OK).json({

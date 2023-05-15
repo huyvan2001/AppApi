@@ -15,8 +15,13 @@ const createCalendar = async ({
     id_user,
     id_recipe,
     date,
-    create_at
+    create_at,
+    is_delete: false
    })
+}
+
+const deleteRecipeByDay = async(_id) => {
+    await Calendar.findOneAndUpdate({_id:_id},{is_delete: true})
 }
 
 const getAllDaysCalendar = async (id_user) => {
@@ -46,6 +51,7 @@ const getAllDaysCalendar = async (id_user) => {
       {
         $match: {
           id_user: id_user,
+          is_delete: false,
           $expr: {
             $eq: [
               { $toDate: "$date" },
@@ -75,6 +81,31 @@ const getAllDaysCalendar = async (id_user) => {
               }
             },
             {
+                $lookup: {
+                  from: "likes",
+                  let: { recipeId: "$id_recipe" },
+                  pipeline: [
+                    {
+                      $match: {
+                        $expr: {
+                          $and: [
+                            { $eq: ["$id_recipe", "$$recipeId"] },
+                            { $eq: ["$id_user", id_user] }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      $project: {
+                        _id: 0,
+                        is_like: 1
+                      }
+                    }
+                  ],
+                  as: "like"
+                }
+              },
+            {
               $project: {
                 _id: 0,
                 id_recipe: 1,
@@ -87,7 +118,14 @@ const getAllDaysCalendar = async (id_user) => {
                   _id: 1,
                   name: 1,
                   url_image: 1
-                }
+                },
+                like: {
+                    $cond: {
+                      if: { $gt: [{ $size: "$like" }, 0] },
+                      then: { $arrayElemAt: ["$like.is_like", 0] },
+                      else: false
+                    }
+                  }
               }
             }
           ],
@@ -112,5 +150,6 @@ const getAllDaysCalendar = async (id_user) => {
 export default {
     createCalendar,
     getAllDaysCalendar,
-    getRecipeByDay
+    getRecipeByDay,
+    deleteRecipeByDay
 }

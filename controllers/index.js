@@ -9,6 +9,9 @@ import userController from "./user.js";
 import infoController from "./info.js"
 import filterController from "./filter.js";
 import calendarController from "./calendar.js";
+import likeController from "./like.js"
+import likeDishController from "./likedish.js"
+import heathCareController from "./heathcare.js";
 export{
     categoryController,
     collectionController,
@@ -20,5 +23,8 @@ export{
     userController,
     infoController,
     filterController,
-    calendarController
+    calendarController,
+    likeController,
+    likeDishController,
+    heathCareController
 }

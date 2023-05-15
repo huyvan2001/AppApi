@@ -2,12 +2,14 @@ import HttpStatusCode from '../exceptions/HttpStatusCode.js'
 import jwt from 'jsonwebtoken'
 
 export default function checkToken(req,res,next) {
-    if( req.url.toLowerCase().trim() != '/info'.toLowerCase().trim()
-        || req.url.toLowerCase().trim() != '/info/create'.toLowerCase().trim()
-        || req.url.toLowerCase().trim() != '/info/update'.toLowerCase().trim()||
-        req.url.toLowerCase().trim() != '/user/changepassword'.toLowerCase().trim() ||
-        req.url.toLowerCase().trim() != '/calendar/create'.toLowerCase().trim(),
-        req.url.toLowerCase().trim() != '/calendar'.toLowerCase().trim()
+    if( req.url.toLowerCase().trim() == '/ingredient'.toLowerCase().trim()
+        || req.url.toLowerCase().trim() == '/ingredientdetail'.toLowerCase().trim()
+        || req.url.toLowerCase().trim() == '/author'.toLowerCase().trim()
+        || req.url.toLowerCase().trim() == '/filter'.toLowerCase().trim()
+        || req.url.toLowerCase().trim() == '/likedish'.toLowerCase().trim()
+        || req.url.toLowerCase().trim() == '/heathcare'.toLowerCase().trim()
+        || req.url.toLowerCase().trim() == '/collection'.toLowerCase().trim()
+        || req.url.toLowerCase().trim() == '/category'.toLowerCase().trim()
         ) {
             next()
         return

@@ -9,9 +9,10 @@ const createInfo = async({
     gender,
     height,
     weight,
-    favoriteList
+    id_like_dish,
+    id_heath_care
 }) => {
-    if(!name || !dateOfBirth || !gender || !height || !weight || !favoriteList) {
+    if(!name || !dateOfBirth || !gender || !height || !weight || !id_like_dish || !id_heath_care) {
         throw new Exception(Exception.FIELD_NOT_FILLED)
     }
     if (!Number.isInteger(gender) || !Number.isFinite(height) || !Number.isFinite(weight) ) {
@@ -37,7 +38,8 @@ const createInfo = async({
         gender,
         height,
         weight,
-        favoriteList
+        id_like_dish,
+        id_heath_care
     })
 
 }
@@ -48,9 +50,10 @@ const updateInfo = async({
     dateOfBirth,
     gender,
     height,
-    weight
+    weight,
+    id_heath_care
 }) => {
-    if(!name || !dateOfBirth || !gender || !height || !weight) {
+    if(!name || !dateOfBirth || !gender || !height || !weight || !id_heath_care) {
         throw new Exception(Exception.FIELD_NOT_FILLED)
     }
     if (!Number.isInteger(gender) || !Number.isFinite(height) || !Number.isFinite(weight) ) {
@@ -74,7 +77,8 @@ const updateInfo = async({
         dateOfBirth,
         gender,
         height,
-        weight}
+        weight,
+        id_heath_care}
     )
 }
 
@@ -84,13 +88,39 @@ const getInfo = async(id_user) => {
             $match: {id_user : id_user}
         },
         {
+            $lookup: {
+                from: 'likedishes',
+                localField: 'id_like_dish',
+                foreignField: 'id_like_dish',
+                as: 'likedishes'
+              }
+        },
+        {
+            $lookup: {
+                from: 'healthcares',
+                localField: 'id_health_care',
+                foreignField: 'id_health_care',
+                as: 'heathcare'
+              }
+        },
+        {
             $project: {
                 name: 1,
                 dateOfBirth:1,
                 gender:1,
                 height:1,
                 weight:1,
-                favoriteList:1
+                favoriteList:1,
+                likedishes:{
+                    _id:1,
+                    name:1,
+                    url_image:1
+                },
+                heathcare:{
+                    _id:1,
+                    name:1,
+                    key:1
+                }
             }
         }
     ])

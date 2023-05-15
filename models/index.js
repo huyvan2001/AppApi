@@ -14,6 +14,10 @@ import Time from "./time.js"
 import Kcal from "./kcal.js"
 import Serve from "./serve.js"
 import Calendar from "./calendar.js"
+import Like from './like.js';
+import Save from './save.js';
+import LikeDish from './likedish.js'
+import HealthCare from './healthcare.js'
 export{
     Category,
     CategoryDetail,
@@ -30,5 +34,9 @@ export{
     Time,
     Kcal,
     Serve,
-    Calendar
+    Calendar,
+    Like,
+    Save,
+    HealthCare,
+    LikeDish
 }

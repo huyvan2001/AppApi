@@ -1,6 +1,7 @@
 import HttpStatusCode from '../exceptions/HttpStatusCode.js'
 import { recipeResponsitory } from '../repositories/index.js'
 import {MAX_RECORDS} from '../global/constants.js'
+import jwt from 'jsonwebtoken'
 
 const responseJson = (res,results,total_page) => {
     res.status(HttpStatusCode.OK).json({
@@ -10,6 +11,10 @@ const responseJson = (res,results,total_page) => {
 }
 
 async function getRecipeByFilter(req,res){
+    const token = req.headers?.authorization?.split(" ")[1]
+    const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
+    let {_id} =  jwtObject
+
     let {page = 1, limit = MAX_RECORDS} = req.query
     limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
     let {
@@ -24,6 +29,7 @@ async function getRecipeByFilter(req,res){
 
     try {
         let total_record = await recipeResponsitory.getTotalRecipeByFilter({
+            id_user:_id,
             id_category_detail,
             total_time,
             serves,
@@ -66,6 +72,9 @@ async function getRecipeByFilter(req,res){
 }
 
 async function getRecipeByColletion(req,res){
+    const token = req.headers?.authorization?.split(" ")[1]
+    const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
+    let {_id} =  jwtObject
     let {id,page = 1, limit = MAX_RECORDS} = req.query
     limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
     try{
@@ -77,6 +86,7 @@ async function getRecipeByColletion(req,res){
         }
         let total_page = Math.ceil(total_record/limit)
         let results = await recipeResponsitory.getRecipesByColletion({
+            id_user:_id,
             id_collection: id,
             page: page,
             limit:limit
@@ -92,6 +102,9 @@ async function getRecipeByColletion(req,res){
 }
 
 async function getRandomRecipe(req,res){
+    const token = req.headers?.authorization?.split(" ")[1]
+    const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
+    let {_id} =  jwtObject
     let {searchString,page = 1, limit = MAX_RECORDS} = req.query
     var total_page = 10
     try{
@@ -106,6 +119,7 @@ async function getRandomRecipe(req,res){
             
         }
         let results = await recipeResponsitory.getRandomRecipe({
+            id_user:_id,
             page: page,
             limit:limit,
             searchString
@@ -123,6 +137,9 @@ async function getRandomRecipe(req,res){
 
 
 async function getRecipeByIngredient(req,res){
+    const token = req.headers?.authorization?.split(" ")[1]
+    const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
+    let {_id} =  jwtObject
     let {id,page = 1, limit = MAX_RECORDS} = req.query
     limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
     try{
@@ -133,6 +150,7 @@ async function getRecipeByIngredient(req,res){
         }
         let total_page = Math.ceil(total_record/limit)
         let results = await recipeResponsitory.getRecipeByIngredient({
+            id_user:_id,
             id_ingerdient: id,
             page: page,
             limit:limit

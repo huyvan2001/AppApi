@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-export default mongoose.model('Calendar',
+export default mongoose.model('Save',
 new Schema({
     id_user: {
         type: String,
@@ -9,15 +9,7 @@ new Schema({
         type: String,
         required: true
     },
-    date: {
-        type: Date,
-        required: true
-    },
-    create_at: {
-        type: Date,
-        required: true
-    },
-    is_delete: {
+    is_save: {
         type: Boolean,
         required: true
     }
