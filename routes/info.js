@@ -6,7 +6,7 @@ import {
 const router = express.Router()
 
 router.post('/create',infoController.createInfo)
-router.post('/update',infoController.updateInfo)
+router.put('/update',infoController.updateInfo)
 router.get('/',infoController.getInfo)
 
 
