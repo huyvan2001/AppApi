@@ -100,9 +100,10 @@ const getInfo = async(id_user) => {
                 from: 'healthcares',
                 localField: 'id_health_care',
                 foreignField: 'id_health_care',
-                as: 'heathcare'
+                as: 'healthcare'
               }
         },
+        { $unwind: '$healthcare' },
         {
             $project: {
                 name: 1,
@@ -116,7 +117,7 @@ const getInfo = async(id_user) => {
                     name:1,
                     url_image:1
                 },
-                heathcare:{
+                healthcare:{
                     _id:1,
                     name:1,
                     key:1
