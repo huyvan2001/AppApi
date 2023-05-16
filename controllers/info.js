@@ -83,7 +83,7 @@ async function updateInfo(req,res) {
             gender,
             height,
             weight,
-            id_heath_care
+            id_health_care
         } = req.body
     
         await infoResponsitory.updateInfo({
@@ -93,7 +93,7 @@ async function updateInfo(req,res) {
             gender,
             height,
             weight,
-            id_heath_care
+            id_health_care
         })
 
         res.status(HttpStatusCode.OK).json({

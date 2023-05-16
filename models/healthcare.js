@@ -10,7 +10,7 @@ new Schema({
         required: true
     },
     key:{
-        type: String,
+        type: [String],
         required: true
     }
 })) 

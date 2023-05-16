@@ -1,148 +1,97 @@
 [
     {
-        "id_like_dish":"like_dish_almond",
-        "name":"almond",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Falmond.png?alt=media&token=6ce0c93c-3e88-4828-a2f9-99ef2930d88e"
+        "id_health_care":"health_care_diabetes",
+        "name":"Diabetes",
+        "key": ["category_detail_low_carb","category_detail_low_sugar"]
     },
     {
-        "id_like_dish":"like_dish_apricot",
-        "name":"apricot",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fapricot.png?alt=media&token=b396c744-a21f-41df-8fd1-3c6e9ddc540b"
+        "id_health_care":"health_care_obesity",
+        "name":"Obesity",
+        "key": ["category_detail_low_carb","category_detail_low_fat","category_detail_low_sugar","category_detail_keto","category_detail_vegetarian"]
     },
     {
-        "id_like_dish":"like_dish_bao",
-        "name":"bao",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fbao.png?alt=media&token=9a360237-1a5d-481f-b99d-da21621b2873"
+        "id_health_care":"health_care_cardiovascular_disease",
+        "name":"Cardiovascular disease",
+        "key": ["category_detail_low_carb","category_detail_low_sugar","category_detail_keto","category_detail_vegetarian","category_detail_egg_free"]
     },
     {
-        "id_like_dish":"like_dish_beer",
-        "name":"beer",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fbeer.png?alt=media&token=e720927d-1b75-484e-af2b-3f4ce9c55b63"
+        "id_health_care":"health_care_nausea_syndrome",
+        "name":"Nausea syndrome",
+        "key": ["category_detail_low_carb"]
     },
     {
-        "id_like_dish":"like_dish_cake",
-        "name":"cake",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fcake.png?alt=media&token=0241c7b6-f5e0-4e8f-b8d4-27d266808da2"
+        "id_health_care":"health_care_diabetes",
+        "name":"Diabetes",
+        "key": ["category_detail_low_sugar","category_detail_vegetarian"]
     },
     {
-        "id_like_dish":"like_dish_cashew",
-        "name":"cashew",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fcashew.png?alt=media&token=c7b26157-9ae0-4a14-b2ce-06088678312c"
+        "id_health_care":"health_care_liver_disease",
+        "name":"Liver disease",
+        "key": ["category_detail_low_fat","category_detail_low_sugar"]
     },
     {
-        "id_like_dish":"like_dish_chestnut",
-        "name":"chestnut",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fchestnut.png?alt=media&token=eb2f377d-4f73-4d2b-b629-44243ce51186"
+        "id_health_care":"health_care_kidney_disease",
+        "name":"Kidney disease",
+        "key": ["category_detail_low_sugar"]
     },
     {
-        "id_like_dish":"like_dish_coffee",
-        "name":"coffee",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fcoffee.png?alt=media&token=30ac5ce3-554c-481a-b0ce-3614bc426b97"
+        "id_health_care":"health_care_epilepsy",
+        "name":"Epilepsy",
+        "key": ["category_detail_keto"]
     },
     {
-        "id_like_dish":"like_dish_doughnut",
-        "name":"doughnut",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fdoughnut.png?alt=media&token=56299ce1-9a28-47fb-b568-520577bbab08"
+        "id_health_care":"health_care_cancer",
+        "name":"Cancer",
+        "key": ["category_detail_vegetarian"]
     },
     {
-        "id_like_dish":"like_dish_drink",
-        "name":"drink",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fdrink.png?alt=media&token=82a49df0-3b7a-45e9-b35d-54486a834a44"
+        "id_health_care":"health_care_egg_allergy",
+        "name":"Egg allergy",
+        "key": ["category_detail_egg_free"]
     },
     {
-        "id_like_dish":"like_dish_hotdog",
-        "name":"hotdog",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fhotdog.png?alt=media&token=39cc6394-311b-48b9-8958-38e8709b6a08"
+        "id_health_care":"health_care_high_glycemic_index",
+        "name":"High glycemic index",
+        "key": ["category_detail_egg_free"]
     },
     {
-        "id_like_dish":"like_dish_icecream",
-        "name":"icecream",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Ficecream.png?alt=media&token=bc98b38c-c3b6-49b1-9620-8bd5ae2afc7f"
+        "id_health_care":"health_care_celiac_disease",
+        "name":"Celiac disease",
+        "key": ["category_detail_gluten_free"]
     },
     {
-        "id_like_dish":"like_dish_juice",
-        "name":"juice",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fjuice.png?alt=media&token=d6e78ac1-eb8a-455e-86b8-15d4440ac399"
+        "id_health_care":"health_care_gluten_sensitivity",
+        "name":"Gluten sensitivity",
+        "key": ["category_detail_gluten_free"]
     },
     {
-        "id_like_dish":"like_dish_jujube",
-        "name":"jujube",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fjujube.png?alt=media&token=26c6c5f0-1179-46b5-b49c-195b89b73725"
-    },
-
-    {
-        "id_like_dish":"like_dish_lollipop",
-        "name":"lollipop",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Flollipop.png?alt=media&token=ac32d23c-a51a-46bd-b045-e8d9882e8c8c"
+        "id_health_care":"health_care_digestive_disorders",
+        "name":"Digestive disorders",
+        "key": ["category_detail_gluten_free"]
     },
     {
-        "id_like_dish":"like_dish_macadamia",
-        "name":"macadamia",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fmacadamia.png?alt=media&token=a3eaac31-54dc-42b6-aa9c-6b7e765b8c5e"
+        "id_health_care":"health_care_milk_allergy",
+        "name":"Milk allergy",
+        "key": ["category_detail_dairy_free"]
     },
     {
-        "id_like_dish":"like_dish_mango",
-        "name":"mango",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fmango.png?alt=media&token=12ed1a99-f8e1-4eb1-a93a-d1ab9656ae35"
+        "id_health_care":"health_care_lactose_intolerance",
+        "name":"Lactose intolerance",
+        "key": ["category_detail_dairy_free"]
     },
     {
-        "id_like_dish":"like_dish_milk",
-        "name":"milk",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fmilk.png?alt=media&token=7d778c6e-8379-4ea0-8e84-830c65164d8f"
+        "id_health_care":"health_care_digestive_disorders",
+        "name":"Digestive disorders",
+        "key": ["category_detail_dairy_free"]
     },
     {
-        "id_like_dish":"like_dish_peanut",
-        "name":"peanut",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fpeanut.png?alt=media&token=d06d74a8-3748-444d-a5d7-2a61b8604c93"
+        "id_health_care":"health_care_thyroid_disease",
+        "name":"Thyroid disease",
+        "key": ["category_detail_dairy_free"]
     },
     {
-        "id_like_dish":"like_dish_pecan",
-        "name":"pecan",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fpecan.png?alt=media&token=2da38e4d-27b6-459a-a735-078944fa389a"
-    },
-    {
-        "id_like_dish":"like_dish_pineapple",
-        "name":"pineapple",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fpineapple.png?alt=media&token=aa040693-2375-44e6-977f-3ed059805836"
-    },
-    {
-        "id_like_dish":"like_dish_pistachio",
-        "name":"pistachio",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fpistachio.png?alt=media&token=3b302c05-bde7-4a72-ad31-3da6001b21aa"
-    },
-    {
-        "id_like_dish":"like_dish_pizza",
-        "name":"pizza",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fpizza.png?alt=media&token=1a6d5ee2-684a-4d84-803b-6a5fede6a630"
-    },
-    {
-        "id_like_dish":"like_dish_pudding",
-        "name":"pudding",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fpudding.png?alt=media&token=f952f79a-3ae4-4e93-a1d0-dee029bf6b53"
-    },
-    {
-        "id_like_dish":"like_dish_sandwich",
-        "name":"sandwich",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fsandwich.png?alt=media&token=ef73da20-65e0-4277-aa77-e620a85c589d"
-    },
-    {
-        "id_like_dish":"like_dish_strawberry",
-        "name":"strawberry",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fstrawberry.png?alt=media&token=bc821fe9-d726-4016-af21-4f4874123fe1"
-    },
-    {
-        "id_like_dish":"like_dish_sushi",
-        "name":"sushi",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fsushi.png?alt=media&token=a49bda4b-8bcd-4c1a-a257-32f15baae008"
-    },
-    {
-        "id_like_dish":"like_dish_toast",
-        "name":"toast",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Ftoast.png?alt=media&token=24673f43-973d-4e7c-8563-20cb098c733d"
-    },
-    {
-        "id_like_dish":"like_dish_walnut",
-        "name":"walnut",
-        "url_image":"https://firebasestorage.googleapis.com/v0/b/food-recipe-app-4a8a0.appspot.com/o/likedish%2Fwalnut.png?alt=media&token=fa3ed8f5-f474-412e-8a61-05324e7c9724"
+        "id_health_care":"health_care_nut_allergy",
+        "name":"Nut allergy",
+        "key": ["category_detail_nut_free"]
     }
 ]
