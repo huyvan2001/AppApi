@@ -2,7 +2,7 @@ import HttpStatusCode from '../exceptions/HttpStatusCode.js'
 import jwt from 'jsonwebtoken'
 
 export default function checkToken(req,res,next) {
-    if( req.url.toLowerCase().trim() == '/ingredient'.toLowerCase().trim()
+    if( req.url.toLowerCase().trim().includes('/ingredient'.toLowerCase().trim())
         || req.url.toLowerCase().trim().includes('/ingredientdetail'.toLowerCase().trim())
         || req.url.toLowerCase().trim().includes('/recipedetail'.toLowerCase().trim())
         || req.url.toLowerCase().trim().includes('/author'.toLowerCase().trim())
