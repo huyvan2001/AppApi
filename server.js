@@ -40,7 +40,7 @@ app.use('/ingredient',ingredientRouter)
 app.use('/ingredientdetail',ingredientdetailRouter)
 app.use('/filter',filterRouter)
 app.use('/likedish',likedishController)
-app.use('/heathcare',heathCareController)
+app.use('/healthcare',heathCareController)
 
 
 const port = process.env.PORT ?? 3000

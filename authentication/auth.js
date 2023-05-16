@@ -8,7 +8,7 @@ export default function checkToken(req,res,next) {
         || req.url.toLowerCase().trim().includes('/author'.toLowerCase().trim())
         || req.url.toLowerCase().trim().includes('/filter'.toLowerCase().trim())
         || req.url.toLowerCase().trim() == '/likedish'.toLowerCase().trim()
-        || req.url.toLowerCase().trim() == '/heathcare'.toLowerCase().trim()
+        || req.url.toLowerCase().trim() == '/healthcare'.toLowerCase().trim()
         || req.url.toLowerCase().trim() == '/collection'.toLowerCase().trim()
         || req.url.toLowerCase().trim() == '/category'.toLowerCase().trim()
         || req.url.toLowerCase().trim() == '/user/login'.toLowerCase().trim()
