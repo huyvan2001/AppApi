@@ -10,9 +10,9 @@ const createInfo = async({
     height,
     weight,
     id_like_dish,
-    id_heath_care
+    id_health_care
 }) => {
-    if(!name || !dateOfBirth || !gender || !height || !weight || !id_like_dish || !id_heath_care) {
+    if(!name || !dateOfBirth || !gender || !height || !weight || !id_like_dish || !id_health_care) {
         throw new Exception(Exception.FIELD_NOT_FILLED)
     }
     if (!Number.isInteger(gender) || !Number.isFinite(height) || !Number.isFinite(weight) ) {
@@ -39,7 +39,7 @@ const createInfo = async({
         height,
         weight,
         id_like_dish,
-        id_heath_care
+        id_health_care
     })
 
 }
@@ -51,9 +51,9 @@ const updateInfo = async({
     gender,
     height,
     weight,
-    id_heath_care
+    id_health_care
 }) => {
-    if(!name || !dateOfBirth || !gender || !height || !weight || !id_heath_care) {
+    if(!name || !dateOfBirth || !gender || !height || !weight || !id_health_care) {
         throw new Exception(Exception.FIELD_NOT_FILLED)
     }
     if (!Number.isInteger(gender) || !Number.isFinite(height) || !Number.isFinite(weight) ) {
@@ -78,7 +78,7 @@ const updateInfo = async({
         gender,
         height,
         weight,
-        id_heath_care}
+        id_health_care}
     )
 }
 

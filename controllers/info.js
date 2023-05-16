@@ -42,7 +42,7 @@ async function createInfo(req,res) {
             height,
             weight,
             id_like_dish,
-            id_heath_care
+            id_health_care
         } = req.body
 
         await infoResponsitory.createInfo({
@@ -53,7 +53,7 @@ async function createInfo(req,res) {
             height,
             weight,
             id_like_dish,
-            id_heath_care
+            id_health_care
         })
 
         res.status(HttpStatusCode.OK).json({

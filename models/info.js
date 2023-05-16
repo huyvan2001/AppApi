@@ -29,7 +29,7 @@ export default mongoose.model('Info',
             type: [String], 
             required: true
         },
-        id_heath_care: { 
+        id_health_care: { 
             type: String, 
             required: true
         }
