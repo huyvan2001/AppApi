@@ -13,6 +13,8 @@ export default function checkToken(req,res,next) {
         || req.url.toLowerCase().trim() == '/category'.toLowerCase().trim()
         || req.url.toLowerCase().trim() == '/user/login'.toLowerCase().trim()
         || req.url.toLowerCase().trim() == '/user/register'.toLowerCase().trim()
+        || req.url.toLowerCase().trim().includes('/user/activate'.toLowerCase().trim())
+
         ) {
             next()
         return
