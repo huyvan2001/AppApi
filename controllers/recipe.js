@@ -11,10 +11,7 @@ const responseJson = (res,results,total_page) => {
 }
 
 async function getRecipeByFilter(req,res){
-    const token = req.headers?.authorization?.split(" ")[1]
-    const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
-    let {_id} =  jwtObject
-
+   
     let {page = 1, limit = MAX_RECORDS} = req.query
     limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
     let {
@@ -28,6 +25,10 @@ async function getRecipeByFilter(req,res){
     } = req.body
 
     try {
+        const token = req.headers?.authorization?.split(" ")[1]
+        const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
+        let {_id} =  jwtObject
+
         let total_record = await recipeResponsitory.getTotalRecipeByFilter({
             id_user:_id,
             id_category_detail,
@@ -72,12 +73,13 @@ async function getRecipeByFilter(req,res){
 }
 
 async function getRecipeByColletion(req,res){
-    const token = req.headers?.authorization?.split(" ")[1]
-    const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
-    let {_id} =  jwtObject
+   
     let {id,page = 1, limit = MAX_RECORDS} = req.query
     limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
     try{
+        const token = req.headers?.authorization?.split(" ")[1]
+        const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
+        let {_id} =  jwtObject
         let total_record = await recipeResponsitory.getTotalRecord(id,"id_collection")
 
         limit = limit >= total_record ? total_record : limit
@@ -137,12 +139,13 @@ async function getRandomRecipe(req,res){
 
 
 async function getRecipeByIngredient(req,res){
-    const token = req.headers?.authorization?.split(" ")[1]
-    const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
-    let {_id} =  jwtObject
+    
     let {id,page = 1, limit = MAX_RECORDS} = req.query
     limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
     try{
+        const token = req.headers?.authorization?.split(" ")[1]
+    const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
+    let {_id} =  jwtObject
         let total_record = await recipeResponsitory.getTotalRecord(id,"id_ingerdient")
         limit = limit >= total_record ? total_record : limit
         if (limit == 0) {
@@ -166,12 +169,13 @@ async function getRecipeByIngredient(req,res){
 }
 
 async function getRecipeByAuthor(req,res){
-    const token = req.headers?.authorization?.split(" ")[1]
-    const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
-    let {_id} =  jwtObject
+    
     let {page = 1, limit = MAX_RECORDS} = req.query
     limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
     try{
+        const token = req.headers?.authorization?.split(" ")[1]
+         const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
+        let {_id} =  jwtObject
         let {author} = req.body
         let total_record = await recipeResponsitory.getTotalRecord(author,"author")
         limit = limit >= total_record ? total_record : limit
