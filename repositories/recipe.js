@@ -241,8 +241,8 @@ const getResultReturn = ({
             total_time: 1,
             author: 1,
             category_details: {
-              
               _id: 1,
+              id_category_detail:1,
               name: 1,
               url_image: 1
             },
