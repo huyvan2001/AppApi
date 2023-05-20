@@ -166,6 +166,9 @@ async function getRecipeByIngredient(req,res){
 }
 
 async function getRecipeByAuthor(req,res){
+    const token = req.headers?.authorization?.split(" ")[1]
+    const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
+    let {_id} =  jwtObject
     let {page = 1, limit = MAX_RECORDS} = req.query
     limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
     try{
@@ -178,6 +181,7 @@ async function getRecipeByAuthor(req,res){
         let total_page = Math.ceil(total_record/limit)
 
         let results = await recipeResponsitory.getRecipeByAuthor({
+            id_user:_id,
             author: author,
             page: page,
             limit:limit

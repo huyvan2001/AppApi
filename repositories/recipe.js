@@ -262,11 +262,13 @@ const getResultReturn = ({
 }
 
 const getRecipeByAuthor = async({
+    id_user,
     author,
     page,
     limit
 }) => {
     return getResultReturn({
+        id_user,
         id : author,
         page:page,
         limit:limit,
@@ -422,6 +424,7 @@ const getRecipeByIngredient = async({
 }) =>
 {
     return getResultReturn({
+        id_user: id_user,
         id : id_ingerdient,
         page:page,
         limit:limit,
