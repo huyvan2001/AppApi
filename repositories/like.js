@@ -10,7 +10,7 @@ const likeRecipe = async ({
         throw new Exception(Exception.FIELD_NOT_FILLED)
     }
 
-    let usedToLike = Like.findOne({id_user:id_user,id_recipe:id_recipe}).exec()
+    let usedToLike = await Like.findOne({id_user:id_user,id_recipe:id_recipe}).exec()
 
     if (usedToLike){
       await Like.findOneAndUpdate({id_user:id_user,id_recipe:id_recipe},{is_like:true})
