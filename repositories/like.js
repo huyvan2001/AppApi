@@ -13,7 +13,7 @@ const likeRecipe = async ({
     let usedToLike = Like.findOne({id_user:id_user,id_recipe:id_recipe}).exec()
 
     if (usedToLike){
-      Like.findOneAndUpdate({id_user:id_user,id_recipe:id_recipe},{is_like:true})
+      await Like.findOneAndUpdate({id_user:id_user,id_recipe:id_recipe},{is_like:true})
     }
     else {
       await Like.create({
