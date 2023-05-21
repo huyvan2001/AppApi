@@ -10,17 +10,28 @@ const likeRecipe = async ({
         throw new Exception(Exception.FIELD_NOT_FILLED)
     }
 
-   await Like.create({
-    id_user,
-    id_recipe,
-    is_like:true
-   })
+    let usedToLike = Like.findOne({id_user:id_user,id_recipe:id_recipe}).exec()
+
+    if (usedToLike){
+      Like.findOneAndUpdate({id_user:id_user,id_recipe:id_recipe},{is_like:true})
+    }
+    else {
+      await Like.create({
+        id_user,
+        id_recipe,
+        is_like:true
+       })
+    }
+
+  
 }
 
 const unlikeRecipe = async ({
     id_user,
     id_recipe
 }) => {
+    
+   
    await Like.findOneAndUpdate({id_user:id_user,id_recipe:id_recipe},{is_like:false})
 }
 
