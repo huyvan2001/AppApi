@@ -29,8 +29,8 @@ async function getRecipeByFilter(req,res){
         const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
         let {_id} =  jwtObject
 
+
         let total_record = await recipeResponsitory.getTotalRecipeByFilter({
-            id_user:_id,
             id_category_detail,
             total_time,
             serves,
@@ -49,6 +49,7 @@ async function getRecipeByFilter(req,res){
         }
         else {
             let results = await recipeResponsitory.getRecipeByFilter({
+                id_user: _id,
                 page,
                 limit,
                 id_category_detail,
