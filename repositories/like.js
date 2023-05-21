@@ -111,7 +111,7 @@ const getAllLikeRecipes = async(id_user) => {
         },
         {
           $project: {
-            _id: "$recipe._id",
+            _id: 1,
             id_recipe: "$recipe.id_recipe",
             id_recipe_detail: "$recipe.id_recipe_detail",
             name: "$recipe.name",
