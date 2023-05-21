@@ -68,7 +68,7 @@ const getRecipeByFilter = async({
             {
                 $lookup: {
                   from: "likes",
-                  let: { recipeId: "$_id" },
+                  let: { recipeId: "$id_recipe" },
                   pipeline: [
                     {
                       $match: {
@@ -211,7 +211,7 @@ const getResultReturn = ({
         {
           $lookup: {
             from: "likes",
-            let: { recipeId: "$_id" },
+            let: { recipeId: "$id_recipe" },
             pipeline: [
               {
                 $match: {
