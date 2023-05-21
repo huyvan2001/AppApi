@@ -114,11 +114,13 @@ const getInfo = async(id_user) => {
                 favoriteList:1,
                 likedishes:{
                     _id:1,
+                    id_like_dish:1,
                     name:1,
                     url_image:1
                 },
                 healthcare:{
                     _id:1,
+                    id_health_care:1,
                     name:1,
                     key:1
                 }
