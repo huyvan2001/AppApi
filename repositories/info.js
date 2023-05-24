@@ -53,11 +53,14 @@ const updateInfo = async({
     weight,
     id_health_care
 }) => {
-    if(!name || !dateOfBirth || !gender || !height || !weight || !id_health_care) {
+    if(!name || !dateOfBirth || !height || !weight || !id_health_care) {
         throw new Exception(Exception.FIELD_NOT_FILLED)
     }
     if (!Number.isInteger(gender) || !Number.isFinite(height) || !Number.isFinite(weight) ) {
         throw new Exception(Exception.WRONG_FORMAT)
+    }
+    if (!gender) {
+        gender = 0
     }
 
     let date = Date(dateOfBirth)
