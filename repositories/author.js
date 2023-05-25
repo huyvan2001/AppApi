@@ -30,6 +30,15 @@ const getAuthor = async({
     }
 }
 
+const getRandomAuthor = async() => {
+    let results = await Author.aggregate([
+        {
+            $sample: {size : 20}
+        }
+    ])
+    return results
+}
+
 const getTotalRecordSearch = async(searchString) => {
     return await Author.find({name : { $regex: searchString,$options: 'i'}}).countDocuments()
 }
@@ -59,5 +68,6 @@ export default {
     getAuthor,
     getTotalPage,
     searchAuthor,
-    getTotalRecordSearch
+    getTotalRecordSearch,
+    getRandomAuthor
 }

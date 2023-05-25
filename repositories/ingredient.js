@@ -29,6 +29,16 @@ const getIngredient = async({
     }
 }
 
+const getRandomIngredient = async() => {
+    let results = await Ingredient.aggregate([
+        {
+            $sample: {size : 20}
+        }
+    ])
+
+    return results
+}
+
 const getTotalRecordSearch = async(searchString) => {
     return  await Ingredient.find({name : { $regex: searchString,$options: 'i'}}).countDocuments() 
 }
@@ -129,5 +139,6 @@ export default {
     searchIngredient,
     getTotalRecordSearch,
     searchIngredientByAlphabet,
-    getTotalRecordSearchByAlphabet
+    getTotalRecordSearchByAlphabet,
+    getRandomIngredient
 }
