@@ -7,7 +7,7 @@ async function createCalendar(req,res) {
         const token = req.headers?.authorization?.split(" ")[1]
         const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
         let {_id} =  jwtObject 
-        let {id_recipe,date,create_at} = req.body
+        let {id_recipe,date,type} = req.body
 
         await calendarResponsitory.createCalendar({
             id_user: _id,
