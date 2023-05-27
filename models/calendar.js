@@ -13,8 +13,8 @@ new Schema({
         type: Date,
         required: true
     },
-    create_at: {
-        type: Date,
+    type: {
+        type: String,
         required: true
     },
     is_delete: {

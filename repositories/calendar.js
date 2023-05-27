@@ -4,10 +4,10 @@ const createCalendar = async ({
     id_user,
     id_recipe,
     date,
-    create_at
+    type
 }) => {
 
-    if (!id_recipe || !date || !create_at) {
+    if (!id_recipe || !date || !type) {
         throw new Exception(Exception.FIELD_NOT_FILLED)
     }
 
@@ -15,7 +15,7 @@ const createCalendar = async ({
     id_user,
     id_recipe,
     date,
-    create_at,
+    type,
     is_delete: false
    })
 }
@@ -138,7 +138,7 @@ const getAllDaysCalendar = async (id_user) => {
       },
       {
         $project: {
-          create_at: 1,
+          type: 1,
           recipe: 1
         }
       }

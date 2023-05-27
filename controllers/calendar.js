@@ -13,7 +13,7 @@ async function createCalendar(req,res) {
             id_user: _id,
             id_recipe,
             date,
-            create_at
+            type
         })
 
         res.status(HttpStatusCode.OK).json({
