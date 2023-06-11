@@ -38,7 +38,7 @@ export default function checkToken(req,res,next) {
             return
         }        
     }catch(exception) {
-        res.status(HttpStatusCode.BAD_REQUEST).json({
+        res.status(HttpStatusCode.UNAUTHORIZED).json({
             message: exception.message,
             status: false
         })
