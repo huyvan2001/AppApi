@@ -12,6 +12,8 @@ import calendarController from "./calendar.js";
 import likeController from "./like.js"
 import likeDishController from "./likedish.js"
 import heathCareController from "./heathcare.js";
+import planController from "./plan.js"
+import planDetailController from "./plandetail.js"
 export{
     categoryController,
     collectionController,
@@ -26,5 +28,7 @@ export{
     calendarController,
     likeController,
     likeDishController,
-    heathCareController
+    heathCareController,
+    planController,
+    planDetailController
 }

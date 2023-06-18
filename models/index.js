@@ -18,6 +18,8 @@ import Like from './like.js';
 import Save from './save.js';
 import LikeDish from './likedish.js'
 import HealthCare from './healthcare.js'
+import Plan from './plan.js'
+import PlanDetail from "./plandetail.js"
 export{
     Category,
     CategoryDetail,
@@ -38,5 +40,7 @@ export{
     Like,
     Save,
     HealthCare,
-    LikeDish
+    LikeDish,
+    Plan,
+    PlanDetail
 }

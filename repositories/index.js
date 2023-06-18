@@ -14,6 +14,8 @@ import calendarResponsitory from "./calendar.js";
 import likeResponsitory from "./like.js"
 import likedishResponsitory from "./likedish.js"
 import healthcareResponsitory from "./healthcare.js";
+import planResponsitory from "./plan.js"
+import planDetailResponsitory from "./plandetail.js"
 
 export {
     categoryResponsitory,
@@ -31,5 +33,7 @@ export {
     calendarResponsitory,
     likeResponsitory,
     likedishResponsitory,
-    healthcareResponsitory
+    healthcareResponsitory,
+    planResponsitory,
+    planDetailResponsitory
 }

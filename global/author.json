@@ -1,97 +1,631 @@
 [
     {
-        "id_health_care":"health_care_diabetes",
-        "name":"Diabetes",
-        "key": ["category_detail_low_carb","category_detail_low_sugar"]
+        
+        "id_plan_detail": "id_plan_detail_vegan",
+        "plan": [
+            {
+                "weekday": "Monday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_homemade_granola"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_easy_breakfast_burritos"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_easy_vegan_wellington"
+                    }
+                ]
+            },
+            {
+                "weekday": "Tuesday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_blueberry_baked_oats"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_easy_vegan_wellington"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_vegetable_tagine_with_apricot_quinoa"
+                    }
+                ]
+            },
+            {
+                "weekday": "Wenesday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_blueberry_baked_oats"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_broccoli_salad"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_easy_vegan_wellington"
+                    }
+                ]
+            },
+            {
+                "weekday": "Thursday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_homemade_granola"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_radish_&_cucumber_salad"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_vegetable_tagine_with_apricot_quinoa"
+                    }
+                ]
+            },
+            {
+                "weekday": "Friday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_homemade_granola"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_vegan_mushroom_&_potato_hash"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_sweet_potato_&_black_bean_chilli_with_zesty_quinoa"
+                    }
+                ]
+            },
+            {
+                "weekday": "Saturday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_homemade_granola"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_tomato_&_aubergine_pasta"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_mushroom_&_potato_curry"
+                    }
+                ]
+            },
+            {
+                "weekday": "Sunday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_baked_eggs_with_spinach,_tomatoes,_ricotta_&_basil"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_tofu_scramble"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_tomato_&_aubergine_pasta"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "id_health_care":"health_care_obesity",
-        "name":"Obesity",
-        "key": ["category_detail_low_carb","category_detail_low_fat","category_detail_low_sugar","category_detail_keto","category_detail_vegetarian"]
+
+        "id_plan_detail": "id_plan_detail_keto",
+        "plan": [
+            {
+                "weekday": "Monday",
+                "meals": [
+                    {
+
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_red_cabbage_&_potato_hash"
+                    },
+                    {
+
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_broccoli_and_kale_green_soup"
+                    },
+                    {
+
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_gluten-free_chilli_cornbread"
+                    }
+                ]
+            },
+            {
+                "weekday": "Tuesday",
+                "meals": [
+
+                    {
+
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_homemade_granola"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_spiced_honey-glazed_halloumi_&_fig_salad"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_spinach,_coconut_&_turmeric_baked_eggs_with_paratha"
+                    }
+                ]
+            },
+            {
+                "weekday": "Wenesday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_blackberry_&_apple_oat_bake"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_broccoli_and_kale_green_soup"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_gluten-free_chilli_cornbread"
+                    }
+                ]
+            },
+            {
+                "weekday": "Thursday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_blackberry_&_apple_oat_bake"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_spicy_moroccan_eggs"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_chickpea,_red_pepper,_egg_&_feta_hash"
+                    }
+                ]
+            },
+            {
+                "weekday": "Friday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_blackberry_&_apple_oat_bake"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_spicy_moroccan_eggs"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_spinach,_coconut_&_turmeric_baked_eggs_with_paratha"
+                    }
+                ]
+            },
+            {
+                "weekday": "Saturday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_blackberry_&_apple_oat_bake"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_chickpea,_red_pepper,_egg_&_feta_hash"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_healthy_egg_&_chips"
+                    }
+                ]
+            },
+            {
+                "weekday": "Sunday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_blackberry_&_apple_oat_bake"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_spicy_moroccan_eggs"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_broccoli_and_kale_green_soup"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "id_health_care":"health_care_cardiovascular_disease",
-        "name":"Cardiovascular disease",
-        "key": ["category_detail_low_carb","category_detail_low_sugar","category_detail_keto","category_detail_vegetarian","category_detail_egg_free"]
+        "id_plan_detail": "id_plan_healthy",
+        "plan": [
+            {
+                "weekday": "Monday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_red_cabbage_&_potato_hash"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_roasted_tomato,_basil_&_parmesan_quiche"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_classic_potato_salad"
+                    }
+                ]
+            },
+            {
+                "weekday": "Tuesday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_vegan_banana_bread"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_pork_&_ham_pie"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_ricotta,_broccoli,_&_new_potato_frittata"
+                    }
+                ]
+            },
+            {
+                "weekday": "Wenesday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_feel-good_muffins"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_roasted_tomato,_basil_&_parmesan_quiche"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_healthy_pepper,_tomato_&_ham_omelette"
+                    }
+                ]
+            },
+            {
+                "weekday": "Thursday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_monkey_bread"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_coronation_egg_mayo_sandwiches"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_healthy_egg_&_chips"
+                    }
+                ]
+            },
+            {
+                "weekday": "Friday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_vegan_banana_bread"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_spicy_tiffin_eggs"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": ""
+                    }
+                ]
+            },
+            {
+                "weekday": "Saturday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_cinnamon_cashew_flapjacks"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_clotted_cream_splits"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_poached_eggs_with_smashed_avocado_&_tomatoes"
+                    }
+                ]
+            },
+            {
+                "weekday": "Sunday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_crispy_chicken_&_smashed_avocado_baps"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_coronation_egg_mayo_sandwiches"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_classic_potato_salad"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "id_health_care":"health_care_nausea_syndrome",
-        "name":"Nausea syndrome",
-        "key": ["category_detail_low_carb"]
+
+        "id_plan_detail": "id_plan_detail_low_carb",
+        "plan": [
+            {
+                "weekday": "Monday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_poached_eggs"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_keralan_chicken_coconut_ishtu"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_slow_cooker_vegetable_curry"
+                    }
+                ]
+            },
+            {
+                "weekday": "Tuesday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_epic_summer_salad"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_creamy_spinach_chicken"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_honey_&_mustard_chicken_thighs_with_spring_veg"
+                    }
+                ]
+            },
+            {
+                "weekday": "Wenesday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_epic_summer_salad"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_egg_foo_yung"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": ""
+                    }
+                ]
+            },
+            {
+                "weekday": "Thursday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_chicken_&_lemon_skewers"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_keralan_chicken_coconut_ishtu"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_creamy_spinach_chicken"
+                    }
+                ]
+            },
+            {
+                "weekday": "Friday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_epic_summer_salad"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_spicy_meatballs_with_chilli_black_beans"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_old_delhi-style_butter_chicken"
+                    }
+                ]
+            },
+            {
+                "weekday": "Saturday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_big-batch_bolognese"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_turkish_one-pan_eggs_&_peppers_(menemen)"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_keralan_chicken_coconut_ishtu"
+                    }
+                ]
+            },
+            {
+                "weekday": "Sunday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_egg_foo_yung"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_spicy_meatballs_with_chilli_black_beans"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_old_delhi-style_butter_chicken"
+                    }
+                ]
+            }
+        ]
     },
     {
-        "id_health_care":"health_care_diabetes",
-        "name":"Diabetes",
-        "key": ["category_detail_low_sugar","category_detail_vegetarian"]
-    },
-    {
-        "id_health_care":"health_care_liver_disease",
-        "name":"Liver disease",
-        "key": ["category_detail_low_fat","category_detail_low_sugar"]
-    },
-    {
-        "id_health_care":"health_care_kidney_disease",
-        "name":"Kidney disease",
-        "key": ["category_detail_low_sugar"]
-    },
-    {
-        "id_health_care":"health_care_epilepsy",
-        "name":"Epilepsy",
-        "key": ["category_detail_keto"]
-    },
-    {
-        "id_health_care":"health_care_cancer",
-        "name":"Cancer",
-        "key": ["category_detail_vegetarian"]
-    },
-    {
-        "id_health_care":"health_care_egg_allergy",
-        "name":"Egg allergy",
-        "key": ["category_detail_egg_free"]
-    },
-    {
-        "id_health_care":"health_care_high_glycemic_index",
-        "name":"High glycemic index",
-        "key": ["category_detail_egg_free"]
-    },
-    {
-        "id_health_care":"health_care_celiac_disease",
-        "name":"Celiac disease",
-        "key": ["category_detail_gluten_free"]
-    },
-    {
-        "id_health_care":"health_care_gluten_sensitivity",
-        "name":"Gluten sensitivity",
-        "key": ["category_detail_gluten_free"]
-    },
-    {
-        "id_health_care":"health_care_digestive_disorders",
-        "name":"Digestive disorders",
-        "key": ["category_detail_gluten_free"]
-    },
-    {
-        "id_health_care":"health_care_milk_allergy",
-        "name":"Milk allergy",
-        "key": ["category_detail_dairy_free"]
-    },
-    {
-        "id_health_care":"health_care_lactose_intolerance",
-        "name":"Lactose intolerance",
-        "key": ["category_detail_dairy_free"]
-    },
-    {
-        "id_health_care":"health_care_digestive_disorders",
-        "name":"Digestive disorders",
-        "key": ["category_detail_dairy_free"]
-    },
-    {
-        "id_health_care":"health_care_thyroid_disease",
-        "name":"Thyroid disease",
-        "key": ["category_detail_dairy_free"]
-    },
-    {
-        "id_health_care":"health_care_nut_allergy",
-        "name":"Nut allergy",
-        "key": ["category_detail_nut_free"]
+        "id_plan_detail": "id_plan_detail_vegetarian",
+        "plan": [
+            {
+                "weekday": "Monday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_red_cabbage_&_potato_hash"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_feta_&_roasted_tomato_shakshuka"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_poached_eggs_with_broccoli,_tomatoes_&_wholemeal_flatbread"
+                    }
+                ]
+            },
+            {
+                "weekday": "Tuesday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_roasted_tomato,_basil_&_parmesan_quiche"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_sweet_potato_pancakes_with_orange_&_grapefruit"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_sweetcorn_fritters_with_slow-cooked_tomatoes"
+                    }
+                ]
+            },
+            {
+                "weekday": "Wenesday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_red_cabbage_&_potato_hash"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_brussels_sprout_slaw"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_mushroom_baked_eggs_with_squished_tomatoes"
+                    }
+                ]
+            },
+            {
+                "weekday": "Thursday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_oat_biscuits"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_mustard_potato_salad"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_feta_&_roasted_tomato_shakshuka"
+                    }
+                ]
+            },
+            {
+                "weekday": "Friday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_sticky_toffee_banana_bread"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_halloumi_flatbreads"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_sweet_potato_hash,_eggs_&_smashed_avo"
+                    }
+                ]
+            },
+            {
+                "weekday": "Saturday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_oat_biscuits"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_sweetcorn_fritters_with_slow-cooked_tomatoes"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_sweet_potato_pancakes_with_orange_&_grapefruit"
+                    }
+                ]
+            },
+            {
+                "weekday": "Sunday",
+                "meals": [
+                    {
+                        "meal_type": "breakfast",
+                        "id_recipe": "recipe_roasted_tomato,_basil_&_parmesan_quiche"
+                    },
+                    {
+                        "meal_type": "lunch",
+                        "id_recipe": "recipe_sweet_potato_hash,_eggs_&_smashed_avo"
+                    },
+                    {
+                        "meal_type": "dinner",
+                        "id_recipe": "recipe_mushroom_baked_eggs_with_squished_tomatoes"
+                    }
+                ]
+            }
+        ]
     }
+    
 ]
