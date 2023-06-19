@@ -6,7 +6,7 @@ async function getPlanDetailByID(req,res){
         let id = req.params.id
         let result = await planDetailResponsitory.getPlanDetailByID(id)
         res.status(HttpStatusCode.OK).json({
-            detail:result
+            detail:result[0]
         })
     }
     catch(exception){
