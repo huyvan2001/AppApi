@@ -107,7 +107,7 @@ const getAllDaysCalendar = async (id_user) => {
               },
             {
               $project: {
-                _id: 0,
+                _id: 1,
                 id_recipe: 1,
                 id_recipe_detail: 1,
                 name: 1,
