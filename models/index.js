@@ -20,6 +20,8 @@ import LikeDish from './likedish.js'
 import HealthCare from './healthcare.js'
 import Plan from './plan.js'
 import PlanDetail from "./plandetail.js"
+import PhysicalHealthyLevel from './physicalhealthylevel.js';
+import HealthGoal from './healthgoal.js';
 export{
     Category,
     CategoryDetail,
@@ -42,5 +44,7 @@ export{
     HealthCare,
     LikeDish,
     Plan,
-    PlanDetail
+    PlanDetail,
+    PhysicalHealthyLevel,
+    HealthGoal
 }

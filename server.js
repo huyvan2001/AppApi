@@ -21,7 +21,9 @@ import {
     likedishRouter,
     heathCareRouter,
     planRouter,
-    planDetailRouter
+    planDetailRouter,
+    physicalHealthyLevelRouter,
+    healthGoalRouter
 } from './routes/index.js';
 
 
@@ -45,6 +47,8 @@ app.use('/likedish',likedishRouter)
 app.use('/healthcare',heathCareRouter)
 app.use('/plan',planRouter)
 app.use('/plandetail',planDetailRouter)
+app.use('/physicalhealthylevel',physicalHealthyLevelRouter)
+app.use('/healthGoal',healthGoalRouter)
 
 
 const port = process.env.PORT ?? 3000

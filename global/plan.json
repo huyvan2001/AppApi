@@ -1,32 +1,27 @@
 [
     {
-        "id_plan": "plan_keto",
-        "id_plan_detail": "id_plan_detail_keto",
-        "name": "Plan Keto",
-        "url_image":"https://www.eatingwell.com/thmb/OjqIt-0hf2URXH1LS9CakKOaiUQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/complete-keto-diet-food-list-what-you-can-and-cannot-eat-if-youre-on-a-ketogenic-diet-3-cd4cd1fc60cb455bbe7eee6e3a7d4d2c.jpg"
+        "id_physical_healthy_level" : "physical_healthy_sedentary",
+        "name": "Sedentary (little or no physical activity)",
+        "value" : 1.2
     },
     {
-        "id_plan": "plan_vegan",
-        "id_plan_detail": "id_plan_detail_vegan",
-        "name": "Plan Vegan",
-        "url_image":"https://images.everydayhealth.com/images/what-is-a-vegan-diet-benefits-food-list-beginners-guide-alt-1440x810.jpg?sfvrsn=1d260c85_1"
-    }, 
-    {
-        "id_plan": "plan_healthy",
-        "id_plan_detail": "id_plan_healthy",
-        "name": "Plan Healthy",
-        "url_image":"https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/healthy-eating-ingredients-1296x728-header.jpg?w=1155&h=1528"
-    }, 
-    {
-        "id_plan": "plan_low_card",
-        "id_plan_detail": "id_plan_detail_low_carb",
-        "name": "Plan Low Carb",
-        "url_image":"https://originvn.com/wp-content/uploads/2022/09/low-carb-diet.jpg"
+        "id_physical_healthy_level" : "physical_healthy_lightly_active",
+        "name": "Lightly active (gentle exercise 1-3 days/week)",
+        "value" : 1.375
     },
     {
-        "id_plan": "plan_vegetarian",
-        "id_plan_detail": "id_plan_detail_vegetarian",
-        "name": "Plan Vegetarian",
-        "url_image":"https://cdn.shopify.com/s/files/1/0569/0615/4154/files/vegetarian_diet_food-scaled.jpg"
+        "id_physical_healthy_level" : "physical_healthy_moderately_active",
+        "name": "Moderately active (gentle exercise 3-5 days/week)",
+        "value" : 1.55
+    },
+    {
+        "id_physical_healthy_level" : "physical_healthy_very_active",
+        "name": "Very active (intense exercise 6-7 days/week",
+        "value" : 1.725
+    },
+    {
+        "id_physical_healthy_level" : "physical_healthy_extra_active",
+        "name": "Extra active (very intense exercise, heavy physical job)",
+        "value" : 1.9
     }
 ]

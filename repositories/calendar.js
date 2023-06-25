@@ -11,6 +11,16 @@ const createCalendar = async ({
         throw new Exception(Exception.FIELD_NOT_FILLED)
     }
 
+    let existedPlan = Calendar.findOne({
+      id_user: id_user,
+      id_recipe: id_recipe,
+      type: type
+    })
+
+    if (existedPlan) {
+      throw new Exception(Exception.RECIPE_EXSITED)
+    }
+
    await Calendar.create({
     id_user,
     id_recipe,

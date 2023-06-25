@@ -14,6 +14,8 @@ import likeDishController from "./likedish.js"
 import heathCareController from "./heathcare.js";
 import planController from "./plan.js"
 import planDetailController from "./plandetail.js"
+import physicalHealthyLevelController from "./physicalhealthylevel.js";
+import healthGoalController from "./healthgoal.js";
 export{
     categoryController,
     collectionController,
@@ -30,5 +32,7 @@ export{
     likeDishController,
     heathCareController,
     planController,
-    planDetailController
+    planDetailController,
+    physicalHealthyLevelController,
+    healthGoalController
 }

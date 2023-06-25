@@ -14,6 +14,9 @@ import likedishRouter from './likedish.js'
 import heathCareRouter from './heathcare.js'
 import planRouter from './plan.js';
 import planDetailRouter from "./plandetail.js"
+import physicalHealthyLevelRouter from './physicalhealthylevel.js';
+import healthGoalRouter from './healthgoal.js';
+
 export{
     categoryRouter,
     collectionRouter,
@@ -30,5 +33,7 @@ export{
     likedishRouter,
     heathCareRouter,
     planDetailRouter,
-    planRouter
+    planRouter,
+    physicalHealthyLevelRouter,
+    healthGoalRouter
 }

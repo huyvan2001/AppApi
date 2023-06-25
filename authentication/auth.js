@@ -17,6 +17,7 @@ export default function checkToken(req,res,next) {
         || req.url.toLowerCase().trim().includes('/user/activate'.toLowerCase().trim())
         || req.url.toLowerCase().trim() == '/plan'.toLowerCase().trim()
         || req.url.toLowerCase().trim().includes('/plandetail'.toLowerCase().trim())
+        || req.url.toLowerCase().trim() == '/physicalhealthylevel'.toLowerCase().trim()
 
         ) {
             next()

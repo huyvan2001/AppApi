@@ -16,7 +16,8 @@ import likedishResponsitory from "./likedish.js"
 import healthcareResponsitory from "./healthcare.js";
 import planResponsitory from "./plan.js"
 import planDetailResponsitory from "./plandetail.js"
-
+import physicalHealthyLevelResponsitory from "./physicalhealthylevel.js";
+import healthgoalResponsitory from "./healthgoal.js";
 export {
     categoryResponsitory,
     categoryDetailResponsitory,
@@ -35,5 +36,7 @@ export {
     likedishResponsitory,
     healthcareResponsitory,
     planResponsitory,
-    planDetailResponsitory
+    planDetailResponsitory,
+    physicalHealthyLevelResponsitory,
+    healthgoalResponsitory
 }
