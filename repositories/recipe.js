@@ -171,7 +171,7 @@ const getMatchCondition = ({
         matchConditions.author = {$in : author};
     }
     if (!!searchString) {
-      const regexString = searchString.split('').join('.*');
+      regexString = ".*" + searchString.split('').join('.*') + ".*";
       // Tạo một biểu thức regex từ chuỗi regexString
       const regex = new RegExp(regexString, 'i');
       // Sử dụng biểu thức regex để tìm kiếm
