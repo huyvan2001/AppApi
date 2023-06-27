@@ -171,9 +171,11 @@ const getMatchCondition = ({
         matchConditions.author = {$in : author};
     }
     if (!!searchString) {
-      const sanitizedSearchString = searchString.replace(/[^\w\s]/gi, '');
-      const regex = new RegExp(sanitizedSearchString, 'i');
-      matchConditions.name = {$regex: regex};
+      const regexString = searchString.split('').join('.*');
+      // Tạo một biểu thức regex từ chuỗi regexString
+      const regex = new RegExp(regexString, 'i');
+      // Sử dụng biểu thức regex để tìm kiếm
+      matchConditions.name = { $regex: regex };
     }
     return matchConditions
 }
