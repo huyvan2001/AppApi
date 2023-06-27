@@ -171,7 +171,9 @@ const getMatchCondition = ({
         matchConditions.author = {$in : author};
     }
     if (!!searchString) {
-        matchConditions.name = {$regex: new RegExp(searchString, 'i')};
+      const sanitizedSearchString = searchString.replace(/[^\w\s]/gi, '');
+      const regex = new RegExp(sanitizedSearchString, 'i');
+      matchConditions.name = {$regex: regex};
     }
     return matchConditions
 }
