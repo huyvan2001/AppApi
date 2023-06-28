@@ -42,16 +42,9 @@ async function getHealthGoal(req,res){
         let {_id} =  jwtObject 
 
         let data = await healthgoalResponsitory.getHealthGoal(_id)
-        if (data.length != 0) {
-            res.status(HttpStatusCode.OK).json({
-                data: data[0]
-            })
-        }
-        else {
-            res.status(HttpStatusCode.OK).json({
-                data: null
-            })
-        }
+        res.status(HttpStatusCode.OK).json({
+            data: data
+        })
        
 
     }

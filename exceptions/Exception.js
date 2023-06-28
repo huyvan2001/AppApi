@@ -22,6 +22,7 @@ export default class Exception extends Error {
     static WRONG_OLD_PASSWORD = "Wrong old password"
     static NOT_CREATE_HEALTH_GOAL = "You should only lose or gain weight 0.5-1kg/perweek"
     static RECIPE_EXSITED = "Recipe already added"
+    static HEALTHGOAL_NOT_FINISHED = "Your HealthGoal should be finished"
 
     constructor(message, validationErrors={}){
         super(message)//call constructor of parent class(Error)        

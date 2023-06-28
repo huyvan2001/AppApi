@@ -11,15 +11,19 @@ const createHealthGoal = async({
     if (!target_weight || !id_physical_healthy_level || !day_goal || !create_at) {
         throw new Exception(Exception.FIELD_NOT_FILLED)
     }
-
+    let existedHealthgoal = await HealthGoal.find({id_user: id_user,is_finished: false})
+    if (existedHealthgoal.length > 0) {
+        throw new Exception(Exception.HEALTHGOAL_NOT_FINISHED)
+    }
     let info = await Info.findOne({id_user: id_user})
     let weight = info.weight
-    let goalWeight = weight - target_weight
+    let goalWeight = Math.abs(weight - target_weight)
+    console.log(goalWeight)
     let suggestWeight = day_goal/7
+    console.log(suggestWeight)
     if (goalWeight > suggestWeight) {
       throw new Exception(Exception.NOT_CREATE_HEALTH_GOAL)
     }
-
     await HealthGoal.create({
         id_user,
         target_weight,
@@ -107,26 +111,30 @@ const getHealthGoalDetail = async({
         console.log(caloriesDown)
         let daily_calories = TDEE - caloriesDown
         return {
-            current_weight: weight,
-            target_weight: healthGoal.target_weight,
+            bmr: parseFloat(BMR.toFixed(2)),
+            tdee: parseFloat(TDEE.toFixed(2)),
+            current_weight: parseFloat(weight.toFixed(2)),
+            target_weight: parseFloat(healthGoal.target_weight.toFixed(2)),
             day_goal: day_goal,
-            daily_calories: daily_calories,
-            healthyLevel : healthyLevel.name,
-            daily_water: daily_water,
-            type: "lose weight"
+            daily_calories: parseFloat(daily_calories.toFixed(2)),
+            healthyLevel : healthyLevel,
+            daily_water: parseFloat(daily_water.toFixed(2)),
+            type: "Lose weight"
         }
     }
     else {
         let caloriesUp = (7700 * Math.abs(goalWeight)) / day_goal
         let daily_calories = TDEE + caloriesUp
         return {
-            current_weight: weight,
-            target_weight: healthGoal.target_weight,
+            bmr: parseFloat(BMR.toFixed(2)),
+            tdee: parseFloat(TDEE.toFixed(2)),
+            current_weight: parseFloat(weight.toFixed(2)),
+            target_weight: parseFloat(healthGoal.target_weight.toFixed(2)),
             day_goal: day_goal,
-            daily_calories: daily_calories,
-            healthyLevel : healthyLevel.name,
-            daily_water: daily_water,
-            type: "gain weight"
+            daily_calories: parseFloat(daily_calories.toFixed(2)),
+            healthyLevel : healthyLevel,
+            daily_water: parseFloat(daily_water.toFixed(2)),
+            type: "Gain weight"
         }
     }
     
