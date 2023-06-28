@@ -35,17 +35,57 @@ async function createHealthGoal(req,res) {
     } 
 }
 
-async function getAllHealthGoal(req,res){
+async function getHealthGoal(req,res){
     try {
         const token = req.headers?.authorization?.split(" ")[1]
         const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
         let {_id} =  jwtObject 
 
-        let data = await healthgoalResponsitory.getAllHealthGoal(_id)
+        let data = await healthgoalResponsitory.getHealthGoal(_id)
+        if (data.length != 0) {
+            res.status(HttpStatusCode.OK).json({
+                data: data[0]
+            })
+        }
+        else {
+            res.status(HttpStatusCode.OK).json({
+                data: null
+            })
+        }
+       
 
-        res.status(HttpStatusCode.OK).json({
-            data: data
+    }
+    catch(exception) {
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
         })
+    } 
+}
+
+async function updateHealthGoal(req,res){
+    try{
+        let id = req.params.id
+        const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
+        let {_id} =  jwtObject 
+        let {
+            target_weight,
+            id_physical_healthy_level,
+            day_goal} = req.body
+        
+        await healthgoalResponsitory.updateHealthGoal({
+            id,
+            id_user:_id,
+            target_weight,
+            id_physical_healthy_level,
+            day_goal
+        }) 
+        
+        res.status(HttpStatusCode.OK).json({
+            message: "Update HealthGoal Successfully",
+            status: true
+        })
+            
 
     }
     catch(exception) {
@@ -83,6 +123,7 @@ async function getHealthGoalDetail(req,res) {
 
 export default {
     createHealthGoal,
-    getAllHealthGoal,
-    getHealthGoalDetail
+    getHealthGoal,
+    getHealthGoalDetail,
+    updateHealthGoal
 }

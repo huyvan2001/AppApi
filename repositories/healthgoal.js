@@ -34,7 +34,7 @@ const finishedGoal = async(id) => {
     await HealthGoal.findOneAndUpdate({_id:id},{is_finished: true})
 }
 
-const getAllHealthGoal = async(id_user) => {
+const getHealthGoal = async(id_user) => {
     return await HealthGoal.aggregate([
         {
             $match: { id_user: id_user }
@@ -50,6 +50,33 @@ const getAllHealthGoal = async(id_user) => {
         }
     ])
 }
+
+const updateHealthGoal = async({
+    id,
+    id_user,
+    target_weight,
+    id_physical_healthy_level,
+    day_goal
+}) => {
+
+    if (!target_weight || !id_physical_healthy_level || !day_goal) {
+        throw new Exception(Exception.FIELD_NOT_FILLED)
+    }
+
+    let info = await Info.findOne({id_user: id_user})
+    let weight = info.weight
+    let goalWeight = weight - target_weight
+    let suggestWeight = day_goal/7
+    if (goalWeight > suggestWeight) {
+      throw new Exception(Exception.NOT_CREATE_HEALTH_GOAL)
+    }
+
+    await HealthGoal.findOneAndUpdate({_id:id},{
+        target_weight,
+        id_physical_healthy_level,
+        day_goal
+    })
+} 
 
 const getHealthGoalDetail = async({
     id_user,
@@ -142,7 +169,8 @@ function calculateAge(birthDate) {
 export default {
     createHealthGoal,
     finishedGoal,
-    getAllHealthGoal,
-    getHealthGoalDetail
+    getHealthGoal,
+    getHealthGoalDetail,
+    updateHealthGoal
 }
 

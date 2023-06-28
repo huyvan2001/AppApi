@@ -5,9 +5,9 @@ import {
 
 const router = express.Router()
 
-router.get('/',healthGoalController.getAllHealthGoal)
+router.get('/',healthGoalController.getHealthGoal)
 router.post('/create',healthGoalController.createHealthGoal)
-
+router.post('/update/:id',healthGoalController.updateHealthGoal)
 router.get('/detail/:id',healthGoalController.getHealthGoalDetail)
 
 export default router
