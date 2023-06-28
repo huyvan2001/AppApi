@@ -48,7 +48,7 @@ app.use('/healthcare',heathCareRouter)
 app.use('/plan',planRouter)
 app.use('/plandetail',planDetailRouter)
 app.use('/physicalhealthylevel',physicalHealthyLevelRouter)
-app.use('/healthGoal',healthGoalRouter)
+app.use('/healthgoal',healthGoalRouter)
 
 
 const port = process.env.PORT ?? 3000
