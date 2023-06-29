@@ -8,4 +8,5 @@ const router = express.Router()
 router.get('/',ingredientController.getIngredient)
 router.get('/alphabet',ingredientController.getIngredientByAlphabet)
 router.get('/search',ingredientController.search)
+router.post('/list',ingredientController.getIngredientByID)
 export default router

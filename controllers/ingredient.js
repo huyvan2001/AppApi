@@ -69,6 +69,25 @@ async function search(req,res){
     }
 }
 
+async function getIngredientByID(req,res) {
+    try {
+        let {listID} = req.body
+        console.log(listID)
+        let ingredients = await ingredientResponsitory.getListIngredientByID(listID)
+
+        res.status(HttpStatusCode.OK).json({
+            ingredients,
+            pages:1
+        })
+    }
+    catch(exception){
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+         })
+    }
+}
+
 async function searchIngredient(req,res){
     let {searchString,page = 1, limit = MAX_RECORDS} = req.query
     limit = limit >= MAX_RECORDS ? MAX_RECORDS : limit
@@ -130,5 +149,6 @@ async function searchIngredientByAlphabet(req,res){
 export default {
     getIngredient,
     getIngredientByAlphabet,
-    search
+    search,
+    getIngredientByID
 }

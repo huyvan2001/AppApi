@@ -43,6 +43,10 @@ const getTotalRecordSearch = async(searchString) => {
     return  await Ingredient.find({name : { $regex: searchString,$options: 'i'}}).countDocuments() 
 }
 
+const getListIngredientByID = async(listID) => {
+    return await Ingredient.find({id_ingredient: {$in: listID}})
+}
+
 const searchIngredient = async({
     page,
     limit,
@@ -140,5 +144,6 @@ export default {
     getTotalRecordSearch,
     searchIngredientByAlphabet,
     getTotalRecordSearchByAlphabet,
-    getRandomIngredient
+    getRandomIngredient,
+    getListIngredientByID
 }
