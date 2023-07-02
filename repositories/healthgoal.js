@@ -1,5 +1,6 @@
 import { HealthGoal,Info,PhysicalHealthyLevel,Recipe,HealthCare} from "../models/index.js";
 import Exception from '../exceptions/Exception.js'
+import { v4 as uuidv4 } from 'uuid';
 const createHealthGoal = async({
     id_user,
     target_weight,
@@ -196,16 +197,19 @@ const getHealthGoalDetail = async({
         return {
             meal_suggest: [
                 {
+                    _id: uuidv4(),
                     calories: breakfast_calories,
                     recipe: breakfast_recipe[0],
                     type: "breakfast"
                 },
                 {
+                    _id: uuidv4(),
                     calories: lunch_calories,
                     recipe: lunch_recipe[0],
                     type: "lunch"
                 },
                 {
+                    _id: uuidv4(),
                     calories: dinner_calories,
                     recipe: dinner_recipe[0],
                     type: "dinner"
@@ -225,16 +229,19 @@ const getHealthGoalDetail = async({
         return {
             meal_suggest: [
                 {
+                    _id: uuidv4(),
                     calories: breakfast_calories,
                     recipe: breakfast_recipe[0],
                     type: "breakfast"
                 },
                 {
+                    _id: uuidv4(),
                     calories: lunch_calories,
                     recipe: lunch_recipe[0],
                     type: "lunch"
                 },
                 {
+                    _id: uuidv4(),
                     calories: dinner_calories,
                     recipe: dinner_recipe[0],
                     type: "dinner"
