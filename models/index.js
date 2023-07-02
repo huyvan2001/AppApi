@@ -22,6 +22,7 @@ import Plan from './plan.js'
 import PlanDetail from "./plandetail.js"
 import PhysicalHealthyLevel from './physicalhealthylevel.js';
 import HealthGoal from './healthgoal.js';
+import HealthIndicator from './healthindicator.js';
 export{
     Category,
     CategoryDetail,
@@ -46,5 +47,6 @@ export{
     Plan,
     PlanDetail,
     PhysicalHealthyLevel,
-    HealthGoal
+    HealthGoal,
+    HealthIndicator
 }

@@ -16,6 +16,7 @@ import planController from "./plan.js"
 import planDetailController from "./plandetail.js"
 import physicalHealthyLevelController from "./physicalhealthylevel.js";
 import healthGoalController from "./healthgoal.js";
+import healthindicatorController from "./healthindicator.js";
 export{
     categoryController,
     collectionController,
@@ -34,5 +35,6 @@ export{
     planController,
     planDetailController,
     physicalHealthyLevelController,
-    healthGoalController
+    healthGoalController,
+    healthindicatorController
 }

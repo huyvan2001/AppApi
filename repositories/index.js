@@ -18,6 +18,7 @@ import planResponsitory from "./plan.js"
 import planDetailResponsitory from "./plandetail.js"
 import physicalHealthyLevelResponsitory from "./physicalhealthylevel.js";
 import healthgoalResponsitory from "./healthgoal.js";
+import healthindicatorResponsitory from "./healthindicator.js"
 export {
     categoryResponsitory,
     categoryDetailResponsitory,
@@ -38,5 +39,6 @@ export {
     planResponsitory,
     planDetailResponsitory,
     physicalHealthyLevelResponsitory,
-    healthgoalResponsitory
+    healthgoalResponsitory,
+    healthindicatorResponsitory
 }

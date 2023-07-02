@@ -1,4 +1,4 @@
-import { HealthGoal,Info,PhysicalHealthyLevel} from "../models/index.js";
+import { HealthGoal,Info,PhysicalHealthyLevel,Recipe,HealthCare} from "../models/index.js";
 import Exception from '../exceptions/Exception.js'
 const createHealthGoal = async({
     id_user,
@@ -10,6 +10,9 @@ const createHealthGoal = async({
 
     if (!target_weight || !id_physical_healthy_level || !day_goal || !create_at) {
         throw new Exception(Exception.FIELD_NOT_FILLED)
+    }
+    if (!Number.isInteger(day_goal) || !Number.isFinite(target_weight) ) {
+        throw new Exception(Exception.WRONG_FORMAT)
     }
     let existedHealthgoal = await HealthGoal.find({id_user: id_user,is_finished: false})
     if (existedHealthgoal.length > 0) {
@@ -89,13 +92,12 @@ const getHealthGoalDetail = async({
     let info = await Info.findOne({id_user: id_user})
     let healthGoal = await HealthGoal.findOne({_id:id})
     let healthyLevel = await PhysicalHealthyLevel.findOne({id_physical_healthy_level : healthGoal.id_physical_healthy_level})
-
+    let healthCare = await HealthCare.findOne({id_health_care: info.id_health_care})
     let age = calculateAge(info.dateOfBirth)
     let height = info.height
     let weight = info.weight
     let gender = info.gender
     let goalWeight = weight - healthGoal.target_weight
-    console.log(goalWeight)
     let day_goal = healthGoal.day_goal
     let PAL = healthyLevel.value
     let BMR = calculateBMR({
@@ -110,14 +112,112 @@ const getHealthGoalDetail = async({
         let caloriesDown = (7700 * goalWeight) / day_goal
         console.log(caloriesDown)
         let daily_calories = TDEE - caloriesDown
+        let breakfast_calories = daily_calories * 0.4
+        let lunch_calories = daily_calories * 0.3
+        let dinner_calories = daily_calories * 0.3
+
+        let breakfast_recipe = await Recipe.aggregate([
+            {
+                $match: {id_category_detail: {$in : ["category_detail_breakfast",healthCare.key]},
+                kcal: {
+                    $lte: breakfast_calories,
+                     $gt: breakfast_calories - 50
+                  }}
+            },
+            {
+                $sample: {size : 100}
+            },
+            {
+                $project: {
+                    _id: 1,
+                    name: 1,
+                    id_recipe:1,
+                    id_recipe_detail:1,
+                    image_url:1,
+                    kcal:1
+                }
+            },
+            {
+                $limit : 1
+            }
+        ])
+
+        let lunch_recipe = await Recipe.aggregate([
+            {
+                $match: {id_category_detail:  {$in : ["category_detail_lunch",healthCare.key]},
+                kcal: {
+                    $lte: lunch_calories,
+                     $gt: lunch_calories - 50
+                  }}
+            },
+            {
+                $sample: {size : 100}
+            },
+            {
+                $project: {
+                    _id: 1,
+                    name: 1,
+                    id_recipe:1,
+                    id_recipe_detail:1,
+                    image_url:1,
+                    kcal:1,
+                }
+            },
+            {
+                $limit : 1
+            }
+        ])
+
+        let dinner_recipe = await Recipe.aggregate([
+            {
+                $match: {id_category_detail:  {$in : ["category_detail_dinner",healthCare.key]},
+                kcal: {
+                    $lte: dinner_calories,
+                     $gt: dinner_calories - 50
+                  }
+                }
+            },
+            {
+                $sample: {size : 100}
+            },
+            {
+                $project: {
+                    _id: 1,
+                    name: 1,
+                    id_recipe:1,
+                    id_recipe_detail:1,
+                    image_url:1,
+                    kcal:1
+                }
+            },
+            {
+                $limit : 1
+            }
+        ])
+
+
         return {
-            bmr: parseFloat(BMR.toFixed(2)),
-            tdee: parseFloat(TDEE.toFixed(2)),
+            meal_suggest: [
+                {
+                    calories: breakfast_calories,
+                    recipe: breakfast_recipe[0],
+                    type: "breakfast"
+                },
+                {
+                    calories: lunch_calories,
+                    recipe: lunch_recipe[0],
+                    type: "lunch"
+                },
+                {
+                    calories: dinner_calories,
+                    recipe: dinner_recipe[0],
+                    type: "dinner"
+                }
+            ],
             current_weight: parseFloat(weight.toFixed(2)),
             target_weight: parseFloat(healthGoal.target_weight.toFixed(2)),
             day_goal: day_goal,
             daily_calories: parseFloat(daily_calories.toFixed(2)),
-            healthyLevel : healthyLevel,
             daily_water: parseFloat(daily_water.toFixed(2)),
             type: "Lose weight"
         }
@@ -126,13 +226,27 @@ const getHealthGoalDetail = async({
         let caloriesUp = (7700 * Math.abs(goalWeight)) / day_goal
         let daily_calories = TDEE + caloriesUp
         return {
-            bmr: parseFloat(BMR.toFixed(2)),
-            tdee: parseFloat(TDEE.toFixed(2)),
+            meal_suggest: [
+                {
+                    calories: breakfast_calories,
+                    recipe: breakfast_recipe[0],
+                    type: "breakfast"
+                },
+                {
+                    calories: lunch_calories,
+                    recipe: lunch_recipe[0],
+                    type: "lunch"
+                },
+                {
+                    calories: dinner_calories,
+                    recipe: dinner_recipe[0],
+                    type: "dinner"
+                }
+            ],
             current_weight: parseFloat(weight.toFixed(2)),
             target_weight: parseFloat(healthGoal.target_weight.toFixed(2)),
             day_goal: day_goal,
             daily_calories: parseFloat(daily_calories.toFixed(2)),
-            healthyLevel : healthyLevel,
             daily_water: parseFloat(daily_water.toFixed(2)),
             type: "Gain weight"
         }

@@ -23,7 +23,8 @@ import {
     planRouter,
     planDetailRouter,
     physicalHealthyLevelRouter,
-    healthGoalRouter
+    healthGoalRouter,
+    healthindicatorRouter
 } from './routes/index.js';
 
 
@@ -49,6 +50,7 @@ app.use('/plan',planRouter)
 app.use('/plandetail',planDetailRouter)
 app.use('/physicalhealthylevel',physicalHealthyLevelRouter)
 app.use('/healthgoal',healthGoalRouter)
+app.use('/healthindicator',healthindicatorRouter)
 
 
 const port = process.env.PORT ?? 3000

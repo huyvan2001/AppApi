@@ -16,6 +16,7 @@ import planRouter from './plan.js';
 import planDetailRouter from "./plandetail.js"
 import physicalHealthyLevelRouter from './physicalhealthylevel.js';
 import healthGoalRouter from './healthgoal.js';
+import healthindicatorRouter from './healthindicator.js';
 
 export{
     categoryRouter,
@@ -35,5 +36,6 @@ export{
     planDetailRouter,
     planRouter,
     physicalHealthyLevelRouter,
-    healthGoalRouter
+    healthGoalRouter,
+    healthindicatorRouter
 }
