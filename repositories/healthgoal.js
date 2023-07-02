@@ -133,8 +133,7 @@ const getHealthGoalDetail = async({
                     name: 1,
                     id_recipe:1,
                     id_recipe_detail:1,
-                    image_url:1,
-                    kcal:1
+                    image_url:1
                 }
             },
             {
@@ -159,8 +158,7 @@ const getHealthGoalDetail = async({
                     name: 1,
                     id_recipe:1,
                     id_recipe_detail:1,
-                    image_url:1,
-                    kcal:1,
+                    image_url:1
                 }
             },
             {
@@ -186,8 +184,7 @@ const getHealthGoalDetail = async({
                     name: 1,
                     id_recipe:1,
                     id_recipe_detail:1,
-                    image_url:1,
-                    kcal:1
+                    image_url:1
                 }
             },
             {
