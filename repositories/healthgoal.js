@@ -90,10 +90,14 @@ const getHealthGoalDetail = async({
     id_user,
     id
 }) => {
-    let info = await Info.findOne({id_user: id_user})
-    let healthGoal = await HealthGoal.findOne({_id:id})
-    let healthyLevel = await PhysicalHealthyLevel.findOne({id_physical_healthy_level : healthGoal.id_physical_healthy_level})
-    let healthCare = await HealthCare.findOne({id_health_care: info.id_health_care})
+    const [info, healthGoal] = await Promise.all([
+        Info.findOne({id_user: id_user}),
+        HealthGoal.findOne({_id:id})
+    ])
+    const [healthyLevel, healthCare] = await Promise.all([
+        PhysicalHealthyLevel.findOne({id_physical_healthy_level : healthGoal.id_physical_healthy_level}),
+        HealthCare.findOne({id_health_care: info.id_health_care})
+    ])
     let age = calculateAge(info.dateOfBirth)
     let height = info.height
     let weight = info.weight
