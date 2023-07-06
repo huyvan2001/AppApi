@@ -4,6 +4,7 @@ import Exception from '../exceptions/Exception.js'
 
 const createHealthIndicator = async({
     id_user,
+    id_health_goal,
     weight,
     blood_sugar,
     heart_rate,
@@ -19,6 +20,7 @@ const createHealthIndicator = async({
         }
         promises.push(HealthIndicator.create({
             id_user: id_user,
+            id_health_goal,
             created_at: create_at,
             value: weight,
             unit: "kg",
@@ -32,6 +34,7 @@ const createHealthIndicator = async({
         }
         promises.push(HealthIndicator.create({
             id_user: id_user,
+            id_health_goal,
             created_at: create_at,
             value: blood_sugar,
             unit: "mg/dl",
@@ -46,6 +49,7 @@ const createHealthIndicator = async({
         }
         promises.push(HealthIndicator.create({
             id_user: id_user,
+            id_health_goal,
             created_at: create_at,
             value: heart_rate,
             unit: "bpm",
@@ -55,8 +59,11 @@ const createHealthIndicator = async({
     await Promise.all(promises)
 }
 
-const getWeightIndicator = async(id_user) => {
-    let total = await HealthIndicator.find({ id_user: id_user,
+const getWeightIndicator = async({
+    id_user,
+    id_health_goal
+}) => {
+    let total = await HealthIndicator.find({ id_user: id_user,id_health_goal:id_health_goal,
         type: "weight"}).countDocuments()
     
     if (total == 0 ) {
@@ -69,6 +76,7 @@ const getWeightIndicator = async(id_user) => {
     let data = await HealthIndicator.aggregate([
         {$match : {
             id_user: id_user,
+            id_health_goal:id_health_goal,
             type: "weight"
         }},
         
@@ -84,8 +92,11 @@ const getWeightIndicator = async(id_user) => {
     return data
 }
 
-const getHeartRateIndicator = async(id_user) => {
-    let total = await HealthIndicator.find({ id_user: id_user,
+const getHeartRateIndicator =  async({
+    id_user,
+    id_health_goal
+}) => {
+    let total = await HealthIndicator.find({ id_user: id_user,id_health_goal:id_health_goal,
         type: "heartrate"}).countDocuments()
     
     if (total == 0 ) {
@@ -97,6 +108,7 @@ const getHeartRateIndicator = async(id_user) => {
     let data = await HealthIndicator.aggregate([
         {$match : {
             id_user: id_user,
+            id_health_goal:id_health_goal,
             type: "heartrate"
         }},
         
@@ -112,8 +124,11 @@ const getHeartRateIndicator = async(id_user) => {
     return data
 }
 
-const getBloodSugarIndicator = async(id_user) => {
-    let total = await HealthIndicator.find({ id_user: id_user,
+const getBloodSugarIndicator = async({
+    id_user,
+    id_health_goal
+}) => {
+    let total = await HealthIndicator.find({ id_user: id_user,id_health_goal:id_health_goal,
         type: "bloodsugar"}).countDocuments()
     if (total == 0 ) {
             return []
@@ -124,6 +139,7 @@ const getBloodSugarIndicator = async(id_user) => {
     let data = await HealthIndicator.aggregate([
         {$match : {
             id_user: id_user,
+            id_health_goal,
             type: "bloodsugar"
         }},
         
@@ -141,17 +157,13 @@ const getBloodSugarIndicator = async(id_user) => {
 
 const getHealthIndicatorByDay = async({
     id_user,
+    id_health_goal,
     date
 }) => {
-    // let total = await HealthIndicator.find({ id_user: id_user,
-    //     created_at: date}).countDocuments()
-    // if (total == 0) {
-    //     return []
-    // }
-    console.log(date)
     let data = await HealthIndicator.aggregate([
         {$match : {
             id_user: id_user,
+            id_health_goal,
             $expr: {
                 $eq: [
                   { $toDate: "$created_at" },

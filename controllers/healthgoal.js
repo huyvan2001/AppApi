@@ -35,6 +35,32 @@ async function createHealthGoal(req,res) {
     } 
 }
 
+async function finishedGoal(req,res) {
+    try {
+        let id = req.params.id
+        const token = req.headers?.authorization?.split(" ")[1]
+        const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
+        let {_id} =  jwtObject 
+
+        await healthgoalResponsitory.finishedGoal({
+            id_user: _id,
+            id
+        })
+
+        res.status(HttpStatusCode.OK).json({
+            message: "Congratulation,Your HealthGoal successfully finished",
+            status: true
+        })
+
+    }
+    catch(exception) {
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            message: exception.toString(),
+            status: false
+        })
+    }
+}
+
 async function getHealthGoal(req,res){
     try {
         const token = req.headers?.authorization?.split(" ")[1]
@@ -119,5 +145,6 @@ export default {
     createHealthGoal,
     getHealthGoal,
     getHealthGoalDetail,
-    updateHealthGoal
+    updateHealthGoal,
+    finishedGoal
 }

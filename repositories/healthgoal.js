@@ -38,8 +38,17 @@ const createHealthGoal = async({
     })
 }
 
-const finishedGoal = async(id) => {
-    await HealthGoal.findOneAndUpdate({_id:id},{is_finished: true})
+const finishedGoal = async({
+    id_user,
+    id,
+}) => {
+    let heal_goal = await HealthGoal.findOne({_id: id})
+    let target_weight = heal_goal.target_weight
+    Promise.all([
+        HealthGoal.findOneAndUpdate({_id:id},{is_finished: true}),
+        Info.findOneAndUpdate({id_user},{weight: target_weight})
+    ])   
+    
 }
 
 const getHealthGoal = async(id_user) => {

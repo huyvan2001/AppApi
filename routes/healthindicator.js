@@ -5,10 +5,10 @@ import {
 
 const router = express.Router()
 
-router.post('/create',healthindicatorController.createHealthIndicator)
-router.get('/weight',healthindicatorController.getWeightIndicator)
-router.get('/heartrate',healthindicatorController.getHeartRateIndicator)
-router.get('/bloodsugar',healthindicatorController.getBloodSugarIndicator)
-router.post('/date',healthindicatorController.getHealthIndicatorByDay)
+router.post('/create/:id',healthindicatorController.createHealthIndicator)
+router.get('/weight/:id',healthindicatorController.getWeightIndicator)
+router.get('/heartrate/:id',healthindicatorController.getHeartRateIndicator)
+router.get('/bloodsugar/:id',healthindicatorController.getBloodSugarIndicator)
+router.post('/date/:id',healthindicatorController.getHealthIndicatorByDay)
 
 export default router

@@ -5,6 +5,10 @@ new Schema({
         type: String,
         required: true
     },
+    id_health_goal: {
+        type: String,
+        required: true
+    },
     created_at: {
         type: Date,
         required: true
