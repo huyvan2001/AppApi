@@ -12,30 +12,31 @@ const createHealthIndicator = async({
     if (!create_at) {
         throw new Exception(Exception.WRONG_FORMAT)
     }
+    const promises = []
     if (!!weight) {
         if (!Number.isFinite(weight)) {
             throw new Exception(Exception.WRONG_FORMAT)
         }
-        await HealthIndicator.create({
+        promises.push(HealthIndicator.create({
             id_user: id_user,
             created_at: create_at,
             value: weight,
             unit: "kg",
             type: "weight"
-        })
+        }))
     }
 
     if (!!blood_sugar) {
         if (!Number.isInteger(blood_sugar)) {
             throw new Exception(Exception.WRONG_FORMAT)
         }
-        await HealthIndicator.create({
+        promises.push(HealthIndicator.create({
             id_user: id_user,
             created_at: create_at,
             value: blood_sugar,
             unit: "mg/dl",
             type: "bloodsugar"
-        })
+        }))
     }
 
 
@@ -43,15 +44,15 @@ const createHealthIndicator = async({
         if (!Number.isInteger(heart_rate)) {
             throw new Exception(Exception.WRONG_FORMAT)
         }
-        await HealthIndicator.create({
+        promises.push(HealthIndicator.create({
             id_user: id_user,
             created_at: create_at,
             value: heart_rate,
             unit: "bpm",
             type: "heartrate"
-        })
+        }))
     }
-
+    await Promise.all(promises)
 }
 
 const getWeightIndicator = async(id_user) => {

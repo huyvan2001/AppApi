@@ -90,10 +90,14 @@ const getHealthGoalDetail = async({
     id_user,
     id
 }) => {
-    let info = await Info.findOne({id_user: id_user})
-    let healthGoal = await HealthGoal.findOne({_id:id})
-    let healthyLevel = await PhysicalHealthyLevel.findOne({id_physical_healthy_level : healthGoal.id_physical_healthy_level})
-    let healthCare = await HealthCare.findOne({id_health_care: info.id_health_care})
+    const [info, healthGoal] = await Promise.all([
+        Info.findOne({id_user: id_user}),
+        HealthGoal.findOne({_id:id})
+    ])
+    const [healthyLevel, healthCare] = await Promise.all([
+        PhysicalHealthyLevel.findOne({id_physical_healthy_level : healthGoal.id_physical_healthy_level}),
+        HealthCare.findOne({id_health_care: info.id_health_care})
+    ])
     let age = calculateAge(info.dateOfBirth)
     let height = info.height
     let weight = info.weight
@@ -111,7 +115,6 @@ const getHealthGoalDetail = async({
     let TDEE = PAL * BMR
     if (goalWeight >= 0) {
         let caloriesDown = (7700 * goalWeight) / day_goal
-        console.log(caloriesDown)
         let daily_calories = TDEE - caloriesDown
         let breakfast_calories = daily_calories * 0.4
         let lunch_calories = daily_calories * 0.3
@@ -224,8 +227,88 @@ const getHealthGoalDetail = async({
         }
     }
     else {
+        
         let caloriesUp = (7700 * Math.abs(goalWeight)) / day_goal
         let daily_calories = TDEE + caloriesUp
+        let breakfast_calories = daily_calories * 0.4
+        let lunch_calories = daily_calories * 0.3
+        let dinner_calories = daily_calories * 0.3
+        let breakfast_recipe = await Recipe.aggregate([
+            {
+                $match: {id_category_detail: {$in : ["category_detail_breakfast",healthCare.key]},
+                kcal: {
+                    $lte: breakfast_calories,
+                     $gt: breakfast_calories - 50
+                  }}
+            },
+            {
+                $sample: {size : 100}
+            },
+            {
+                $project: {
+                    _id: 1,
+                    name: 1,
+                    id_recipe:1,
+                    id_recipe_detail:1,
+                    image_url:1
+                }
+            },
+            {
+                $limit : 1
+            }
+        ])
+
+        let lunch_recipe = await Recipe.aggregate([
+            {
+                $match: {id_category_detail:  {$in : ["category_detail_lunch",healthCare.key]},
+                kcal: {
+                    $lte: lunch_calories,
+                     $gt: lunch_calories - 50
+                  }}
+            },
+            {
+                $sample: {size : 100}
+            },
+            {
+                $project: {
+                    _id: 1,
+                    name: 1,
+                    id_recipe:1,
+                    id_recipe_detail:1,
+                    image_url:1
+                }
+            },
+            {
+                $limit : 1
+            }
+        ])
+
+        let dinner_recipe = await Recipe.aggregate([
+            {
+                $match: {id_category_detail:  {$in : ["category_detail_dinner",healthCare.key]},
+                kcal: {
+                    $lte: dinner_calories,
+                     $gt: dinner_calories - 50
+                  }
+                }
+            },
+            {
+                $sample: {size : 100}
+            },
+            {
+                $project: {
+                    _id: 1,
+                    name: 1,
+                    id_recipe:1,
+                    id_recipe_detail:1,
+                    image_url:1
+                }
+            },
+            {
+                $limit : 1
+            }
+        ])
+
         return {
             meal_suggest: [
                 {
