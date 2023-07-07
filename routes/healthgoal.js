@@ -9,6 +9,6 @@ router.get('/',healthGoalController.getHealthGoal)
 router.post('/create',healthGoalController.createHealthGoal)
 router.put('/update/:id',healthGoalController.updateHealthGoal)
 router.get('/detail/:id',healthGoalController.getHealthGoalDetail)
-router.get('/finish/:id',healthGoalController.finishedGoal)
+router.post('/finish/:id',healthGoalController.finishedGoal)
 
 export default router

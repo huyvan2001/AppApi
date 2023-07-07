@@ -66,7 +66,7 @@ async function getHealthGoal(req,res){
         const token = req.headers?.authorization?.split(" ")[1]
         const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
         let {_id} =  jwtObject 
-
+        console.log(_id)
         let data = await healthgoalResponsitory.getHealthGoal(_id)
         res.status(HttpStatusCode.OK).json({
             data: data
@@ -122,7 +122,7 @@ async function getHealthGoalDetail(req,res) {
         const token = req.headers?.authorization?.split(" ")[1]
         const jwtObject = jwt.verify(token, process.env.JWT_SECRET)
         let {_id} =  jwtObject 
-
+        
         let result = await healthgoalResponsitory.getHealthGoalDetail({
             id_user:_id,
             id: id
