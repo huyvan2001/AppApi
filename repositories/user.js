@@ -199,7 +199,7 @@ const activateHandle = async(token) => {
       );
     
     await User.create({
-        email:email,
+        email:email.toLowerCase(),
         password:hashedPassword
     })
 
